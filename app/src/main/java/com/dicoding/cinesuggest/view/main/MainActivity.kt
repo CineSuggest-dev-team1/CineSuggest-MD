@@ -1,7 +1,8 @@
-package com.dicoding.cinesuggest
+package com.dicoding.cinesuggest.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dicoding.cinesuggest.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

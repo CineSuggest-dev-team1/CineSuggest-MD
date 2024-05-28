@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CineSuggest</string>
+    <string name="version_app">Version 1.0.0</string>
 </resources>

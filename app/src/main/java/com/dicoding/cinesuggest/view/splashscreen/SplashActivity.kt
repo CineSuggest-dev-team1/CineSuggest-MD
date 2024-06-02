@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import com.dicoding.cinesuggest.R
 import com.dicoding.cinesuggest.databinding.ActivitySplashBinding
 import com.dicoding.cinesuggest.view.main.MainActivity
+import com.dicoding.cinesuggest.view.signIn.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                val intent = Intent(this@SplashActivity, SignInActivity::class.java)
                 startActivity(intent)
                 finish()
             }

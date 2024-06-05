@@ -4,8 +4,8 @@
     <string name="signup">Sign Up</string>
     <string name="signin">Sign In</string>
     <string name="e_mail">E-mail</string>
-    <string name="login_here_text">Already Have An Account?Sign In</string>
-    <string name="sign_here_text">Don\'t You Have An Account?Sign Up</string>
+    <string name="login_here_text">Already Have An Account? Sign In</string>
+    <string name="sign_here_text">Don\'t You Have An Account? Sign Up</string>
     <string name="email">Email</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login Your Account</string>
@@ -13,4 +13,8 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="or_register_with">Or</string>
+    <string name="this_is_logo">This Is Logo</string>
+    <string name="this_is_desc">This Is Desc</string>
+    <string name="or">Or</string>
+    <string name="login_with_google">Login With Google</string>
 </resources>

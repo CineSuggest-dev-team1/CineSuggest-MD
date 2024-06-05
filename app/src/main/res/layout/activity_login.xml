@@ -13,7 +13,8 @@
         android:layout_height="139dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:src="@drawable/launcher" />
+        android:src="@drawable/launcher"
+        android:contentDescription="@string/this_is_logo" />
 
     <!-- Create Account Title -->
     <TextView
@@ -25,7 +26,6 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/login"
-        android:textColor="@color/black"
         android:textSize="30sp" />
 
     <!-- Email Label -->
@@ -35,10 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/createAccountTitle"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="78dp"
         android:fontFamily="@font/poppinsregular"
-        android:text="@string/email"
-        android:textColor="@color/black" />
+        android:text="@string/email" />
 
     <!-- Email Input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -48,8 +47,7 @@
         android:layout_below="@id/emailLabel"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/email">
+        android:layout_marginTop="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
@@ -67,8 +65,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/poppinsregular"
-        android:text="@string/password"
-        android:textColor="@color/black" />
+        android:text="@string/password" />
 
     <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -76,10 +73,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
-        android:hint="@string/password"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +88,8 @@
 
     <!-- Sign In Button -->
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/loginButton"
+        style="@style/TextColor"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_below="@id/passwordEditTextLayout"
@@ -102,45 +100,71 @@
         android:text="@string/signin"
         android:textSize="18sp" />
 
-    <!-- Container for ImageButtons -->
+    <!--View Container-->
+    <LinearLayout
+        android:id="@+id/orView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:background="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:text="@string/or" />
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:background="@color/red" />
+    </LinearLayout>
+
+    <!-- Container for Google Button Login -->
     <LinearLayout
         android:id="@+id/imageButtonContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/registerButton"
+        android:layout_below="@id/orView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:orientation="horizontal">
 
-        <!-- Google Sign-In Button -->
-        <ImageButton
-            android:id="@+id/button_google"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/google_icon" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login_google"
+            app:shapeAppearance="?attr/shapeAppearance"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/white"
+            android:padding="16dp"
+            android:text="@string/login_with_google"
+            android:textColor="@color/grey"
+            android:textStyle="bold"
+            app:icon="@drawable/google_icon"
+            app:iconTintMode="multiply"
+            app:elevation="8dp" />
 
-        <!-- Another ImageButton -->
-        <ImageButton
-            android:id="@+id/button_another"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="32dp"
-            android:background="@drawable/facebook_icon" />
     </LinearLayout>
 
     <!-- Login Here Text -->
     <TextView
-        android:id="@+id/loginHereText"
+        android:id="@+id/signInHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@id/imageButtonContainer"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/poppinsmedium"
-        android:text="@string/sign_here_text"
-        android:textColor="@color/black" />
-
+        android:text="@string/sign_here_text"/>
 </RelativeLayout>

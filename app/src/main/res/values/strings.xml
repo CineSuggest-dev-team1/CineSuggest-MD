@@ -1,20 +1,43 @@
 <resources>
+
+    <!-- Firebase -->
+    <string name="client_id">6184440288-qoo8cvrqrq6st46nuhcv8kgqrlh1ovlp.apps.googleusercontent.com</string>
+
+    <!-- App Information -->
     <string name="app_name">CineSuggest</string>
     <string name="version_app">Version 1.0.0</string>
+
+    <!-- Authentication -->
     <string name="signup">Sign Up</string>
     <string name="signin">Sign In</string>
-    <string name="e_mail">E-mail</string>
     <string name="login_here_text">Already Have An Account? Sign In</string>
     <string name="sign_here_text">Don\'t You Have An Account? Sign Up</string>
-    <string name="email">Email</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login Your Account</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="password">Password</string>
-    <string name="username">Username</string>
+    <string name="login_with_google">Login With Google</string>
     <string name="or_register_with">Or</string>
+    <string name="or">Or</string>
+    <string name="logout">Logout</string>
+
+    <!-- User Information -->
+    <string name="e_mail">E-mail</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="your_name">Your name</string>
+    <string name="your_phone_number">Your phone number</string>
+    <string name="current_city">Current City</string>
+
+    <!-- Sign Up Success -->
+    <string name="sign_success_title">Sign up successfully!</string>
+    <string name="sign_up_successfully">Sign up successfully!</string>
+    <string name="sign_desc">Tell us more about you</string>
+    <string name="tell_us_more_about_you">Tell us more about you</string>
+    <string name="button_continue">Continue</string>
+
+    <!-- Miscellaneous -->
     <string name="this_is_logo">This Is Logo</string>
     <string name="this_is_desc">This Is Desc</string>
-    <string name="or">Or</string>
-    <string name="login_with_google">Login With Google</string>
+
 </resources>

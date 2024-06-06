@@ -1,14 +1,13 @@
 package com.dicoding.cinesuggest.view.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cinesuggest.R
 import com.dicoding.cinesuggest.databinding.ActivitySplashBinding
-import com.dicoding.cinesuggest.view.main.MainActivity
-import com.dicoding.cinesuggest.view.signIn.SignInActivity
+import com.dicoding.cinesuggest.view.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(this@SplashActivity, SignInActivity::class.java)
+                val intent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }

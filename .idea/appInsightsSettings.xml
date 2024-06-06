@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.dicoding.cinesuggest" />
+                  <option name="mobileSdkAppId" value="1:6184440288:android:53e67dd9a15a6634135b85" />
+                  <option name="projectId" value="cinesuggest-f6fde" />
+                  <option name="projectNumber" value="6184440288" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

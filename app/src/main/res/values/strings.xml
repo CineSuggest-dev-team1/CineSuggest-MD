@@ -18,6 +18,11 @@
     <string name="or_register_with">Or</string>
     <string name="or">Or</string>
     <string name="logout">Logout</string>
+    <string name="back">Back</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password_text">Please Write Your Email Below!</string>
+    <string name="info_text">Please ensure your email is correct as we will send a password reset link on email.</string>
+    <string name="submit">Submit</string>
 
     <!-- User Information -->
     <string name="e_mail">E-mail</string>
@@ -39,5 +44,9 @@
     <!-- Miscellaneous -->
     <string name="this_is_logo">This Is Logo</string>
     <string name="this_is_desc">This Is Desc</string>
+
+    <!--CustomView-->
+    <string name="error_email">Email Format Is Not Match!</string>
+    <string name="min_length">Minimum Is %1$d Character</string>
 
 </resources>

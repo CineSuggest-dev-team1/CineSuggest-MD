@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.cinemasuggest.view.customview.Email
             android:id="@+id/emaillogin"
             android:fontFamily="@font/poppinsregular"
             android:layout_width="match_parent"
@@ -96,6 +96,20 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Forgot Password Text -->
+    <TextView
+        android:id="@+id/forgotPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/forgot_password"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Sign In Button -->
     <Button
@@ -187,6 +201,7 @@
     <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
+        android:indeterminateDrawable="@drawable/progress_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

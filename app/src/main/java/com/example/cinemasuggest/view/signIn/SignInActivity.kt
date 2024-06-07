@@ -22,6 +22,7 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingExcept
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
@@ -38,6 +39,7 @@ class SignInActivity : AppCompatActivity() {
 
         // Navigate into login
         binding.loginHereText.setOnClickListener {
+            showProgressBar()
             navigateToLogin()
         }
 
@@ -45,7 +47,11 @@ class SignInActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
+                showSnackbar("Please fill in both email and password fields")
+            } else if (password.length < 8) {
+                showSnackbar("Password must be at least 8 characters")
+            } else {
                 showProgressBar()
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     hideProgressBar()
@@ -63,6 +69,7 @@ class SignInActivity : AppCompatActivity() {
 
         // User login with Google account
         binding.signInButton.setOnClickListener {
+            showProgressBar()
             signIn()
         }
     }
@@ -157,6 +164,10 @@ class SignInActivity : AppCompatActivity() {
 
     private fun hideProgressBar() {
         binding.progressBar.visibility = View.GONE
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     companion object {

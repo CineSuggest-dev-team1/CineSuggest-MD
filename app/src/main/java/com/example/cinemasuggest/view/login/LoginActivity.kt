@@ -14,6 +14,7 @@ import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.lifecycleScope
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.databinding.ActivityLoginBinding
+import com.example.cinemasuggest.view.forgotpassword.ForgotPasswordActivity
 import com.example.cinemasuggest.view.main.MainActivity
 import com.example.cinemasuggest.view.signIn.SignInActivity
 import com.google.android.material.snackbar.Snackbar
@@ -46,8 +47,16 @@ class LoginActivity : AppCompatActivity() {
 
         // Navigate into signing page
         binding.signInHere.setOnClickListener {
+            showProgressBar()
             navigateToSignIn()
         }
+
+        // Navigate into forgot password page
+        binding.forgotPasswordText.setOnClickListener {
+            showProgressBar()
+            navigateToForgotPassword()
+        }
+
 
         // User login input
         binding.loginButton.setOnClickListener {
@@ -72,12 +81,18 @@ class LoginActivity : AppCompatActivity() {
 
         // User login with google account
         binding.signInButton.setOnClickListener {
+            showProgressBar()
             signIn()
         }
     }
 
     private fun navigateToSignIn() {
         val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToForgotPassword() {
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
         startActivity(intent)
     }
 

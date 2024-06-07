@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.example.cinemasuggest.view.customview.Email
             android:id="@+id/emailEditText"
             android:fontFamily="@font/poppinsregular"
             android:layout_width="match_parent"
@@ -190,6 +190,7 @@
     <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
+        android:indeterminateDrawable="@drawable/progress_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

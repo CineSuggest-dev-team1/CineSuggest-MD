@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Firebase -->
-    <string name="client_id">6184440288-qoo8cvrqrq6st46nuhcv8kgqrlh1ovlp.apps.googleusercontent.com</string>
+    <string name="client_id">542656476889-bqf7vm07gdp97eukget813vhmkp3voot.apps.googleusercontent.com</string>
 
     <!-- App Information -->
     <string name="app_name">CineSuggest</string>

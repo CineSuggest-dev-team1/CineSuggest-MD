@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.dicoding.cinesuggest"
+    namespace = "com.example.cinemasuggest"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.dicoding.cinesuggest"
+        applicationId = "com.example.cinemasuggest"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
@@ -40,29 +40,14 @@ android {
 }
 
 dependencies {
-    // AndroidX Libraries
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    // Google Material Design
     implementation("com.google.android.material:material:1.12.0")
-
-    // Google Play Services
-    implementation("com.google.android.gms:play-services-base:18.5.0")
-    implementation("com.google.android.gms:play-services-auth:21.1.1")
-
-    // Firebase Authentication
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
-
-    // AndroidX Credentials (if needed)
-    implementation("androidx.credentials:credentials:1.2.2")
-    implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
-
-    // Testing Libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
-

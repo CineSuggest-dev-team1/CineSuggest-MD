@@ -1,10 +1,14 @@
-package com.dicoding.cinesuggest
+package com.dicoding.cinesuggest.Onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.cinesuggest.R
+import com.dicoding.cinesuggest.adapter.CarouselAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +38,26 @@ class Onboarding1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_onboarding1, container, false)
+        val view = inflater.inflate(R.layout.fragment_onboarding1, container, false)
+
+        // Temukan RecyclerView dari layout
+        val recyclerView1: RecyclerView = view.findViewById(R.id.RvCarousel1)
+        val recyclerView2: RecyclerView = view.findViewById(R.id.RvCarousel2)
+
+        // Buat daftar gambar untuk RecyclerView
+        val images = listOf(R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4)
+
+        // Buat adapter dan atur data ke adapter
+        val adapter = CarouselAdapter(requireContext(), images)
+
+        // Atur adapter dan LayoutManager untuk masing-masing RecyclerView
+        recyclerView1.adapter = adapter
+        recyclerView1.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        recyclerView2.adapter = adapter
+        recyclerView2.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        return view
     }
 
     companion object {

@@ -36,7 +36,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="username">Username</string>
-    <string name="your_name">Your name</string>
+    <string name="your_name">Your name (Max 16 Character)</string>
     <string name="your_phone_number">Your phone number</string>
     <string name="current_city">Current City</string>
 
@@ -54,6 +54,13 @@
     <!--CustomView-->
     <string name="error_email">Email Format Is Not Match!</string>
     <string name="min_length">Minimum Is %1$d Character</string>
+
+    <!-- Main -->
+    <string name="error_username">Username Maximum Is 16 Character</string>
+    <string name="error_phone_number">Phone Number Maximum Is 15</string>
+    <string name="error_city">Maximum Character Is 32</string>
+    <string name="hi">Hi, </string>
+    <string name="your_email">Your Email</string>
 
     <!-- TODO: Fragment -->
 

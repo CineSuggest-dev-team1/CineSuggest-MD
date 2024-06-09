@@ -10,7 +10,7 @@
     <!--shape tag is used to
         build a shape in XML-->
     <shape
-        android:innerRadiusRatio="4"
+        android:innerRadiusRatio="3"
         android:shape="ring"
         android:thicknessRatio="8"
         android:useLevel="false">

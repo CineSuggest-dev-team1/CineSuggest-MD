@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.databinding.ActivityLoginBinding
 import com.example.cinemasuggest.view.forgotpassword.ForgotPasswordActivity
+import com.example.cinemasuggest.view.home.HomeActivity
 import com.example.cinemasuggest.view.main.MainActivity
 import com.example.cinemasuggest.view.signIn.SignInActivity
 import com.google.android.material.snackbar.Snackbar
@@ -25,12 +26,14 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingExcept
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +41,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
-        // If user is already logged in, redirect to MainActivity
-        if (auth.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        // If user is already logged in, check if user data exists
+        auth.currentUser?.let {
+            showProgressBar()
+            checkUserData(it.uid)
         }
 
         // Navigate into signing page
@@ -57,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
             navigateToForgotPassword()
         }
 
-
         // User login input
         binding.loginButton.setOnClickListener {
             val email = binding.emaillogin.text.toString()
@@ -69,8 +72,8 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     hideProgressBar()
                     if (it.isSuccessful) {
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
+                        showProgressBar()
+                        checkUserData(auth.currentUser!!.uid)
                     }
                 }.addOnFailureListener {
                     hideProgressBar()
@@ -84,6 +87,25 @@ class LoginActivity : AppCompatActivity() {
             showProgressBar()
             signIn()
         }
+    }
+
+    private fun checkUserData(uid: String) {
+        firestore.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                showProgressBar()
+                if (document.exists() && document.contains("city") && document.contains("name") && document.contains("phone")) {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                } else {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                finish()
+            }
+            .addOnFailureListener {
+                hideProgressBar()
+                showSnackbar("Failed to check user data")
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
     }
 
     private fun navigateToSignIn() {
@@ -164,8 +186,8 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         hideProgressBar()
         if (currentUser != null) {
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-            finish()
+            showProgressBar()
+            checkUserData(currentUser.uid)
         }
     }
 

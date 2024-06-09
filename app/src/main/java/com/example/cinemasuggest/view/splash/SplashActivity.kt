@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.databinding.ActivitySplashBinding
 import com.example.cinemasuggest.view.login.LoginActivity
+import com.example.cinemasuggest.view.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
                 startActivity(intent)
                 finish()
             }

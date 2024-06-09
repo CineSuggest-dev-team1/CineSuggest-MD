@@ -7,6 +7,12 @@
     <string name="app_name">CineSuggest</string>
     <string name="version_app">Version 1.0.0</string>
 
+    <!--OnBoarding-->
+    <string name="Image">Image</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding1">Welcome To Cine Suggest\nFind Your Favourite Movie!</string>
+    <string name="next">Next</string>
+
     <!-- Authentication -->
     <string name="signup">Sign Up</string>
     <string name="signin">Sign In</string>
@@ -48,5 +54,8 @@
     <!--CustomView-->
     <string name="error_email">Email Format Is Not Match!</string>
     <string name="min_length">Minimum Is %1$d Character</string>
+
+    <!-- TODO: Fragment -->
+
 
 </resources>

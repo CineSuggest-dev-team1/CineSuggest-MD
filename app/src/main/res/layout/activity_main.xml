@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Hi, Username -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/textHello"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,9 +51,9 @@
             android:text="@string/your_email"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/greetingText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <!-- Text Sucess -->
+    <!-- Text Success -->
     <TextView
         android:id="@+id/signupSuccessTitle"
         android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@id/signupSuccessTitle"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Input Name   -->
+    <!-- Input Name -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameInputLayout"
         android:layout_width="match_parent"
@@ -96,7 +96,7 @@
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Input Phone Number   -->
+    <!-- Input Phone Number -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneInputLayout"
         android:layout_width="match_parent"
@@ -115,7 +115,7 @@
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Input City-->
+    <!-- Input City -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cityInputLayout"
         android:layout_width="match_parent"
@@ -134,10 +134,7 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--Continue Button-->
-
-    <!-- Progress Bar -->
-
+    <!-- Continue Button -->
     <Button
         android:id="@+id/continueButton"
         style="@style/TextColor"
@@ -155,6 +152,15 @@
         app:layout_constraintTop_toBottomOf="@id/cityInputLayout"
         app:layout_constraintVertical_bias="0.977" />
 
+    <!-- Dark Overlay -->
+    <View
+        android:id="@+id/darkOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF000000"
+        android:visibility="gone" />
+
+    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:indeterminateDrawable="@drawable/progress_bg"

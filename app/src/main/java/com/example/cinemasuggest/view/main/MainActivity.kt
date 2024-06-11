@@ -28,6 +28,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Check the flag before setting the content view
+        val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val isUserDataSaved = sharedPref.getBoolean("isUserDataSaved", false)
+
+        if (isUserDataSaved) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -110,6 +120,11 @@ class MainActivity : AppCompatActivity() {
             .set(userData)
             .addOnSuccessListener {
                 hideProgressBar()
+                val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                with (sharedPref.edit()) {
+                    putBoolean("isUserDataSaved", true)
+                    apply()
+                }
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
@@ -119,10 +134,11 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+
     private fun checkUserData(uid: String) {
         firestore.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
-                showProgressBar()
+                hideProgressBar()
                 if (document.exists() && document.contains("city") && document.contains("name") && document.contains("phone")) {
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
@@ -176,10 +192,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showProgressBar() {
+        binding.darkOverlay.visibility = View.VISIBLE
         binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun hideProgressBar() {
+        binding.darkOverlay.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
 

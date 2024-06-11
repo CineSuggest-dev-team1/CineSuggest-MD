@@ -8,7 +8,7 @@ import com.example.cinemasuggest.view.onboarding.OnBoarding1Fragment
 
 class OnBoardingAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
-        return 2 // current fragement
+        return 1 //current fragment
     }
 
     override fun createFragment(position: Int): Fragment {

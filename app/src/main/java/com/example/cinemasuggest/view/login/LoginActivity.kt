@@ -18,12 +18,11 @@ import com.example.cinemasuggest.view.forgotpassword.ForgotPasswordActivity
 import com.example.cinemasuggest.view.home.HomeActivity
 import com.example.cinemasuggest.view.main.MainActivity
 import com.example.cinemasuggest.view.signIn.SignInActivity
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
-import com.google.firebase.auth.AuthCredential
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,19 +42,28 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // If user is already logged in, check if user data exists
+        // Check if user is already logged in and navigate directly to HomeActivity if data is saved
         auth.currentUser?.let {
-            showProgressBar()
-            checkUserData(it.uid)
+            val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+            val isUserDataSaved = sharedPref.getBoolean("isUserDataSaved", false)
+
+            if (isUserDataSaved) {
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+                return
+            } else {
+                showProgressBar()
+                checkUserData(it.uid)
+            }
         }
 
-        // Navigate into signing page
+        // Navigate to sign-in page
         binding.signInHere.setOnClickListener {
             showProgressBar()
             navigateToSignIn()
         }
 
-        // Navigate into forgot password page
+        // Navigate to forgot password page
         binding.forgotPasswordText.setOnClickListener {
             showProgressBar()
             navigateToForgotPassword()
@@ -82,9 +90,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // User login with google account
+        // User login with Google account
         binding.signInButton.setOnClickListener {
-            showProgressBar()
             signIn()
         }
     }
@@ -92,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
     private fun checkUserData(uid: String) {
         firestore.collection("users").document(uid).get()
             .addOnSuccessListener { document ->
-                showProgressBar()
+                hideProgressBar()
                 if (document.exists() && document.contains("city") && document.contains("name") && document.contains("phone")) {
                     startActivity(Intent(this, HomeActivity::class.java))
                 } else {
@@ -168,7 +175,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential: AuthCredential = GoogleAuthProvider.getCredential(idToken, null)
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 hideProgressBar()

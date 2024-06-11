@@ -25,6 +25,7 @@
 
         <TextView
             android:id="@+id/textViewSkip"
+            android:visibility="gone"
             style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +88,7 @@
         android:backgroundTint="@color/red"
         android:fontFamily="@font/poppinsbold"
         android:background="@drawable/button_rectangle"
-        android:text="@string/next"
+        android:text="@string/button_continue"
         android:textColor="#FFFFFF"
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"

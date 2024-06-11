@@ -69,7 +69,6 @@ class SignInActivity : AppCompatActivity() {
 
         // User login with Google account
         binding.signInButton.setOnClickListener {
-            showProgressBar()
             signIn()
         }
     }

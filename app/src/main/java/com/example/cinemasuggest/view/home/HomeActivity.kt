@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import android.app.AlertDialog
 import android.view.View
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -19,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +28,33 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
+        // Get user name
+        getUserName()
 
         // Logout
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
         }
+    }
+
+    private fun getUserName() {
+        val user = auth.currentUser ?: return
+        val uid = user.uid
+
+        firestore.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val name = document.getString("name")
+                    binding.tvUsername.text = name
+                } else {
+                    binding.tvUsername.text = "Unknown User"
+                }
+            }
+            .addOnFailureListener {
+                binding.tvUsername.text = "Error fetching name"
+            }
     }
 
     private fun showLogoutConfirmationDialog() {
@@ -75,3 +99,4 @@ class HomeActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.GONE
     }
 }
+

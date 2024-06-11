@@ -4,67 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.HomeActivity">
-
-    <!-- Hi, Username -->
-    <LinearLayout
-        android:id="@+id/textHello"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <!-- Hi -->
-        <TextView
-            android:id="@+id/tv_hi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/hi"
-            android:textSize="20sp" />
-
-        <!-- Username -->
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsbold"
-            android:layout_marginStart="2dp"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:text="@string/username"
-            android:textSize="20sp" />
-
-        <!-- Search -->
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:src="@drawable/baseline_person_24"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/profile" />
-
-        <!-- Logout -->
-        <ImageButton
-            android:id="@+id/btn_logout"
-            android:src="@drawable/baseline_logout_24"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/logout" />
-    </LinearLayout>
+    tools:context=".view.cinerec.RecActivity">
 
     <!-- Bottom Navbar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

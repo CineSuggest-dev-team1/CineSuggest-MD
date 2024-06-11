@@ -23,4 +23,22 @@
     <string name="onboarding2">Select the genres you like to watch</string>
     <string name="onboarding1">Tell us about your favorite movie genres</string>
     <string name="next">Next</string>
+
+
+    <string name="story">Evil Dead is a 2013 American supernatural horror film directed by Fede Álvarez who co-wrote the screenplay with Rodo Sayagues. Dubbed a "re-imagining" of </string>
+    <string name="movie">Movie</string>
+    <string name="title_movie">EVIL DEATH RISE</string>
+    <string name="genre_movie">HORROR 2D.3D.4DX</string>
+    <string name="censor_rating">Censor Rating</string>
+    <string name="duration">Duration</string>
+    <string name="release_date">Release Date</string>
+    <string name="value">A</string>
+    <string name="duration_detail">1hr:38min</string>
+    <string name="date">21 April 2023</string>
+    <string name="available_in">Available in:</string>
+    <string name="english">English</string>
+    <string name="story_plot">Story Plot</string>
+    <string name="cast">Cast</string>
+    <string name="see_movie">See Movie</string>
+
 </resources>

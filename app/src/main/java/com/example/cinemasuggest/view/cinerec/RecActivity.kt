@@ -1,6 +1,6 @@
 package com.example.cinemasuggest.view.cinerec
 
-import OnSwipeTouchListener
+import com.example.cinemasuggest.utils.OnSwipeTouchListener
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -21,7 +21,7 @@ class RecActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set the selected item in the bottom navigation
-        binding.bottomNavigationView.selectedItemId = R.id.bottom_search
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_recommendation
 
         // Set up bottom navigation listener
         setupBottomNavigation()
@@ -47,11 +47,11 @@ class RecActivity : AppCompatActivity() {
                     finish()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.bottom_search -> {
+                R.id.bottom_recommendation -> {
                     // Stay on the RecActivity
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.bottom_profile -> {
+                R.id.bottom_search -> {
                     // Add intent for profile activity if exists
                     return@OnNavigationItemSelectedListener true
                 }

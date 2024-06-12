@@ -11,9 +11,7 @@
         android:layout_width="150dp"
         android:layout_height="210dp"
         android:scaleType="fitXY"
-        android:background="@drawable/image1"
-        android:src="@drawable/image1"
-        tools:src="@drawable/image1"
+        tools:src="@drawable/image3"
         android:contentDescription="@string/Image" />
 
 </com.google.android.material.card.MaterialCardView>

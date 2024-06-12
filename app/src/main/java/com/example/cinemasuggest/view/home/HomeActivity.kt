@@ -1,20 +1,24 @@
 package com.example.cinemasuggest.view.home
 
-import OnSwipeTouchListener
+import com.example.cinemasuggest.utils.OnSwipeTouchListener
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.credentials.ClearCredentialStateRequest
-import androidx.credentials.CredentialManager
 import androidx.lifecycle.lifecycleScope
 import com.example.cinemasuggest.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import android.app.AlertDialog
 import android.view.View
+import androidx.credentials.CredentialManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.cinemasuggest.R
+import com.example.cinemasuggest.data.adapter.Movie
+import com.example.cinemasuggest.data.adapter.MovieAdapter
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.User
 import com.example.cinemasuggest.databinding.ActivityHomeBinding
@@ -30,6 +34,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var db: AppDatabase
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MovieAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +60,12 @@ class HomeActivity : AppCompatActivity() {
             showLogoutConfirmationDialog()
         }
 
+        // Set up RecyclerView
+        recyclerView = binding.RvCarousel1
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        adapter = MovieAdapter(getDummyMovies())
+        recyclerView.adapter = adapter
+
         // Set up swipe listener
         binding.root.setOnTouchListener(object : OnSwipeTouchListener(this@HomeActivity) {
             override fun onSwipeLeft() {
@@ -64,6 +76,15 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun getDummyMovies(): List<Movie> {
+        // Replace this with your actual data source
+        return listOf(
+            Movie("Evil Dead Rise",  R.drawable.movie),
+            Movie("Evil Dead Rise",  R.drawable.movie),
+            Movie("Evil Dead Rise",  R.drawable.movie)
+        )
     }
 
     private fun getUserName() {
@@ -142,14 +163,14 @@ class HomeActivity : AppCompatActivity() {
                     // Stay on the HomeActivity
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.bottom_search -> {
+                R.id.bottom_recommendation -> {
                     val intent = Intent(this@HomeActivity, RecActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.bottom_profile -> {
+                R.id.bottom_search -> {
                     // Add intent for profile activity if exists
                     return@OnNavigationItemSelectedListener true
                 }

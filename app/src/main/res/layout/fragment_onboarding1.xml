@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Onboarding.Onboarding1Fragment"
+    tools:context=".view.Onboarding.Onboarding1Fragment"
     android:orientation="vertical"
     android:background="@color/white">
 

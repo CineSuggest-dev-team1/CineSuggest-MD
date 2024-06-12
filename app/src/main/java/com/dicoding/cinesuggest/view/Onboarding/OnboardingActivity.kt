@@ -1,4 +1,4 @@
-package com.dicoding.cinesuggest.Onboarding
+package com.dicoding.cinesuggest.view.Onboarding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

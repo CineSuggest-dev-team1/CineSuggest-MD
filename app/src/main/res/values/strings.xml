@@ -40,5 +40,32 @@
     <string name="story_plot">Story Plot</string>
     <string name="cast">Cast</string>
     <string name="see_movie">See Movie</string>
+    <string name="back">Back</string>
+    <string name="happy">Happy</string>
+    <string name="sad">Sad</string>
+    <string name="angry">Angry</string>
+    <string name="shock">Shock</string>
+    <string name="tense">Tense</string>
+    <string name="bored">Bored</string>
+    <string name="nervous">Nervous</string>
+    <string name="cheerful">Cheerful</string>
+    <string name="calm">Calm</string>
+    <string name="joyful">Joyful</string>
+    <string name="relaxed">Relaxed</string>
+    <string name="jealous">Jealous</string>
+    <string name="amused">Amused</string>
+    <string name="worried">Worried</string>
+    <string name="motivated">Motivated</string>
+    <string name="recommendation">What Is Your Mood Today :)</string>
+
+
+
+    <string name="username">username</string>
+    <string name="recommended_movies">Recommended Movies</string>
+    <string name="hey_username">Hey, Username</string>
+    <string name="home">Home</string>
+    <string name="cinerec">Cinerec</string>
+    <string name="search">Search</string>
+    <string name="setting">Setting</string>
 
 </resources>

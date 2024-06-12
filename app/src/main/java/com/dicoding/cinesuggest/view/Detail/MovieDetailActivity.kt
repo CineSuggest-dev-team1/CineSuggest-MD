@@ -1,4 +1,4 @@
-package com.dicoding.cinesuggest.Detail
+package com.dicoding.cinesuggest.view.Detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

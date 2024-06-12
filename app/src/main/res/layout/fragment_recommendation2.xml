@@ -8,7 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:background="@color/black"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/action"
+                android:text="@string/happy"
                 android:textSize="11sp" />
 
             <Button
@@ -51,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/adventure"
+                android:text="@string/sad"
                 android:textSize="11sp"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -61,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/adventure"
+                android:text="@string/angry"
                 android:textSize="11sp" />
 
             <Button
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/drama"
+                android:text="@string/shock"
                 android:textSize="11sp" />
 
         </LinearLayout>
@@ -89,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/comedy"
+                android:text="@string/tense"
                 android:textSize="11sp" />
 
             <Button
@@ -98,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/crime"
+                android:text="@string/bored"
                 android:textSize="11sp" />
 
             <Button
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/documentary"
+                android:text="@string/nervous"
                 android:textSize="11sp"
                 tools:ignore="TextSizeCheck" />
 
@@ -117,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/sports"
+                android:text="@string/cheerful"
                 android:textSize="11sp" />
 
         </LinearLayout>
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/fantasy"
+                android:text="@string/calm"
                 android:textSize="11sp" />
 
             <Button
@@ -145,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/horror"
+                android:text="@string/joyful"
                 android:textSize="11sp"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -155,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/music"
+                android:text="@string/relaxed"
                 android:textSize="11sp" />
 
             <Button
@@ -164,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/western"
+                android:text="@string/jealous"
                 android:textSize="11sp" />
 
         </LinearLayout>
@@ -183,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/horror"
+                android:text="@string/amused"
                 android:textColor="#000000"
                 android:textSize="11sp" />
 
@@ -193,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/thriller"
+                android:text="@string/worried"
                 android:textSize="11sp" />
 
             <Button
@@ -202,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/sci_fi"
+                android:text="@string/motivated"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -217,7 +218,7 @@
             android:layout_marginBottom="38dp"
             android:fontFamily="@font/poppinsregular"
             android:gravity="center"
-            android:text="@string/onboarding2"
+            android:text="@string/recommendation"
             android:textColor="@color/white"
             android:textFontWeight="700"
             android:textSize="23sp"

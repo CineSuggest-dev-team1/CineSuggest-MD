@@ -4,7 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dicoding.cinesuggest.Onboarding.OnboardingActivity
+import com.dicoding.cinesuggest.view.Onboarding.OnboardingActivity
+import com.dicoding.cinesuggest.view.recomendation.RecommendationActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
 
             // Panggil aktivitas OnboardingActivity
-            val intent = Intent(this, OnboardingActivity::class.java)
+            val intent = Intent(this, RecommendationActivity::class.java)
             startActivity(intent)
 
             // Tutup MainActivity agar tidak kembali lagi saat menekan tombol kembali

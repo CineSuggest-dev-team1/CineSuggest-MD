@@ -6,19 +6,21 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dicoding.cinesuggest.view.Onboarding.Onboarding1Fragment
 import com.dicoding.cinesuggest.view.Onboarding.Onboarding2Fragment
+import com.dicoding.cinesuggest.view.recomendation.Recommendation1Fragment
+import com.dicoding.cinesuggest.view.recomendation.Recommendation2Fragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {
+class RecommendationPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
-        return 3
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 ->{
-                Onboarding1Fragment()
+                Recommendation1Fragment()
             }
             else ->{
-                Onboarding2Fragment()
+                Recommendation2Fragment()
             }
         }
     }

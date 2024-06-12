@@ -13,10 +13,13 @@
         android:theme="@style/Theme.CineSuggest"
         tools:targetApi="31">
         <activity
-            android:name=".Detail.MovieDetailActivity"
+            android:name=".view.recomendation.RecommendationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.Detail.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Onboarding.OnboardingActivity"
+            android:name=".view.Onboarding.OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

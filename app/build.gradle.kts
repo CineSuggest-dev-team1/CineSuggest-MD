@@ -59,4 +59,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
 
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 }

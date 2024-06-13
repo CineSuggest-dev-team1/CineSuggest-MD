@@ -1,18 +1,12 @@
-package com.example.cinemasuggest.view.home
+package com.example.cinemasuggest.view.search
 
-import com.example.cinemasuggest.utils.OnSwipeTouchListener
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.credentials.ClearCredentialStateRequest
-import androidx.lifecycle.lifecycleScope
-import com.example.cinemasuggest.view.login.LoginActivity
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.launch
-import android.app.AlertDialog
 import android.view.View
-import androidx.credentials.CredentialManager
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -21,28 +15,27 @@ import com.example.cinemasuggest.data.adapter.Movie
 import com.example.cinemasuggest.data.adapter.MovieAdapter
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.User
-import com.example.cinemasuggest.databinding.ActivityHomeBinding
+import com.example.cinemasuggest.databinding.ActivitySearchBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
-import com.example.cinemasuggest.view.cinerec.RecActivity
-import com.example.cinemasuggest.view.search.SearchActivity
+import com.example.cinemasuggest.view.home.HomeActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivitySearchBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var db: AppDatabase
-    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MovieAdapter
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
@@ -50,34 +43,32 @@ class HomeActivity : AppCompatActivity() {
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "cinema-suggest-db")
             .build()
 
-        // Set up bottom navigation
-        setupBottomNavigation()
+        // Set the selected item in the bottom navigation
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_search
 
         // Get user name
         showProgressBar()
         getUserName()
 
-        // Logout
-        binding.btnLogout.setOnClickListener {
-            showLogoutConfirmationDialog()
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.setText(searchView.text)
+                    searchView.hide()
+                    Toast.makeText(this@SearchActivity, searchView.text, Toast.LENGTH_SHORT).show()
+                    false
+                }
         }
 
         // Set up RecyclerView
-        recyclerView = binding.RvCarousel1
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvRecommendedMovies.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
         adapter = MovieAdapter(getDummyMovies())
-        recyclerView.adapter = adapter
+        binding.rvRecommendedMovies.adapter = adapter
 
-        // Set up swipe listener
-        binding.root.setOnTouchListener(object : OnSwipeTouchListener(this@HomeActivity) {
-            override fun onSwipeLeft() {
-                val intent = Intent(this@HomeActivity, Rec1Activity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                finish()
-            }
-        })
-
+        // Set up bottom navigation
+        setupBottomNavigation()
     }
 
     private fun getDummyMovies(): List<Movie> {
@@ -133,50 +124,25 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLogoutConfirmationDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("Are you sure you want to log out?")
-            .setPositiveButton("Yes") { dialog, id ->
-                showProgressBar()
-                navigateToLogin()
-                signOut()
-            }
-            .setNegativeButton("No") { dialog, id ->
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
-    }
-
-    private fun signOut() {
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                val credentialManager = CredentialManager.create(this@HomeActivity)
-                auth.signOut()
-                credentialManager.clearCredentialState(ClearCredentialStateRequest())
-            }
-        }
-    }
-
     private fun setupBottomNavigation() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_home -> {
-                    // Stay on the HomeActivity
+                    val intent = Intent(this@SearchActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_recommendation -> {
-                    val intent = Intent(this@HomeActivity, Rec1Activity::class.java)
+                    val intent = Intent(this@SearchActivity, Rec1Activity::class.java)
                     startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_search -> {
-                    val intent = Intent(this@HomeActivity, SearchActivity::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
+                    // Stay on the SearchActivity
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_settings -> {
@@ -186,14 +152,6 @@ class HomeActivity : AppCompatActivity() {
             }
             false
         })
-    }
-
-    private fun navigateToLogin() {
-        showProgressBar()
-        val intent = Intent(this@HomeActivity, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
     }
 
     private fun showProgressBar() {

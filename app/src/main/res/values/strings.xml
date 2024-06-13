@@ -15,6 +15,7 @@
     <!--OnBoarding2-->
     <string name="action">Action</string>
     <string name="adventure">Adventure</string>
+    <string name="mystery">Mystery</string>
     <string name="drama">Drama</string>
     <string name="comedy">Comedy</string>
     <string name="crime">Crime</string>
@@ -26,7 +27,7 @@
     <string name="western">Western</string>
     <string name="thriller">Thriller</string>
     <string name="sci_fi">Sci-fi</string>
-    <string name="onboarding2">Select the genres you like to watch</string>
+    <string name="onboarding2">Select the genres you like to watch!</string>
     <string name="next">Next</string>
 
     <!-- Authentication -->
@@ -87,5 +88,30 @@
     <string name="trending">Trending </string>
     <string name="movie_title">Evil Dead Rise </string>
     <string name="recommendedmovies">Recommended Movies </string>
+
+    <!-- Recommendation -->
+    <string name="happy">Happy</string>
+    <string name="sad">Sad</string>
+    <string name="angry">Angry</string>
+    <string name="shock">Shock</string>
+    <string name="tense">Tense</string>
+    <string name="bored">Bored</string>
+    <string name="nervous">Nervous</string>
+    <string name="cheerful">Cheerful</string>
+    <string name="calm">Calm</string>
+    <string name="joyful">Joyful</string>
+    <string name="relaxed">Relaxed</string>
+    <string name="jealous">Jealous</string>
+    <string name="amused">Amused</string>
+    <string name="worried">Worried</string>
+    <string name="motivated">Motivated</string>
+    <string name="recommendation">What Is Your Mood Today :)</string>
+
+    <!-- Search -->
+    <string name="searchbar_hint">Search Movies</string>
+    <string name="search_result">Search Result</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

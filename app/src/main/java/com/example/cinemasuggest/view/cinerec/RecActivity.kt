@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.databinding.ActivityRecBinding
 import com.example.cinemasuggest.view.home.HomeActivity
+import com.example.cinemasuggest.view.search.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RecActivity : AppCompatActivity() {
@@ -52,7 +53,10 @@ class RecActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_search -> {
-                    // Add intent for profile activity if exists
+                    val intent = Intent(this@RecActivity, SearchActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_settings -> {

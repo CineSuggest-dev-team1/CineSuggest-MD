@@ -137,7 +137,7 @@
     <!-- Continue Button -->
     <Button
         android:id="@+id/continueButton"
-        style="@style/TextColor"
+        android:textColor="@color/white"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginBottom="32dp"

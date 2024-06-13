@@ -89,7 +89,7 @@
         android:fontFamily="@font/poppinsbold"
         android:background="@drawable/button_rectangle"
         android:text="@string/button_continue"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

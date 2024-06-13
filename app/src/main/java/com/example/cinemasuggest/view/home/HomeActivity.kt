@@ -24,6 +24,7 @@ import com.example.cinemasuggest.data.room.User
 import com.example.cinemasuggest.databinding.ActivityHomeBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
 import com.example.cinemasuggest.view.cinerec.RecActivity
+import com.example.cinemasuggest.view.detail.DetailActivity
 import com.example.cinemasuggest.view.search.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -77,6 +78,12 @@ class HomeActivity : AppCompatActivity() {
                 finish()
             }
         })
+
+        // Add click listener for trendingMov
+        binding.trendingMov.setOnClickListener {
+            val intent = Intent(this@HomeActivity, DetailActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

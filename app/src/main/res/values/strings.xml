@@ -1,14 +1,21 @@
 <resources>
+
+    <!-- Firebase -->
+    <string name="client_id">47796666944-mptq1mb5f7726to4cm4t820uht58kfmc.apps.googleusercontent.com</string>
+
+    <!-- App Information -->
     <string name="app_name">CineSuggest</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="version_app">Beta Version 1.0</string>
 
+    <!--OnBoarding-->
     <string name="Image">Image</string>
-
-
     <string name="skip">Skip</string>
+    <string name="onboarding1">Welcome To Cine Suggest\nFind Your Favourite Movie!</string>
+
+    <!--OnBoarding2-->
     <string name="action">Action</string>
     <string name="adventure">Adventure</string>
+    <string name="mystery">Mystery</string>
     <string name="drama">Drama</string>
     <string name="comedy">Comedy</string>
     <string name="crime">Crime</string>
@@ -20,27 +27,69 @@
     <string name="western">Western</string>
     <string name="thriller">Thriller</string>
     <string name="sci_fi">Sci-fi</string>
-    <string name="onboarding2">Select the genres you like to watch</string>
-    <string name="onboarding1">Tell us about your favorite movie genres</string>
+    <string name="onboarding2">Select the genres you like to watch!</string>
     <string name="next">Next</string>
 
-
-    <string name="story">Evil Dead is a 2013 American supernatural horror film directed by Fede Álvarez who co-wrote the screenplay with Rodo Sayagues. Dubbed a "re-imagining" of </string>
-    <string name="movie">Movie</string>
-    <string name="title_movie">EVIL DEATH RISE</string>
-    <string name="genre_movie">HORROR 2D.3D.4DX</string>
-    <string name="censor_rating">Censor Rating</string>
-    <string name="duration">Duration</string>
-    <string name="release_date">Release Date</string>
-    <string name="value">A</string>
-    <string name="duration_detail">1hr:38min</string>
-    <string name="date">21 April 2023</string>
-    <string name="available_in">Available in:</string>
-    <string name="english">English</string>
-    <string name="story_plot">Story Plot</string>
-    <string name="cast">Cast</string>
-    <string name="see_movie">See Movie</string>
+    <!-- Authentication -->
+    <string name="signup">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="login_here_text">Already Have An Account? Sign In</string>
+    <string name="sign_here_text">Don\'t You Have An Account? Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login Your Account</string>
+    <string name="login_with_google">Login With Google</string>
+    <string name="or_register_with">Or</string>
+    <string name="or">Or</string>
+    <string name="logout">Logout</string>
     <string name="back">Back</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password_text">Please Write Your Email Below!</string>
+    <string name="info_text">Please ensure your email is correct as we will send a password reset link on email.</string>
+    <string name="submit">Submit</string>
+
+    <!-- User Information -->
+    <string name="e_mail">E-mail</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="your_name">Your name (Max 16 Character)</string>
+    <string name="your_phone_number">Your phone number</string>
+    <string name="current_city">Current City</string>
+
+    <!-- Sign Up Success -->
+    <string name="sign_success_title">Sign up successfully!</string>
+    <string name="sign_up_successfully">Sign up successfully!</string>
+    <string name="sign_desc">Tell us more about you</string>
+    <string name="tell_us_more_about_you">Tell us more about you</string>
+    <string name="button_continue">Continue</string>
+
+    <!-- Miscellaneous -->
+    <string name="this_is_logo">This Is Logo</string>
+    <string name="this_is_desc">This Is Desc</string>
+
+    <!--CustomView-->
+    <string name="error_email">Email Format Is Not Match!</string>
+    <string name="min_length">Minimum Is %1$d Character</string>
+
+    <!-- Main -->
+    <string name="error_username">Username Maximum Is 16 Character</string>
+    <string name="error_phone_number">Phone Number Maximum Is 15</string>
+    <string name="error_city">Maximum Character Is 32</string>
+    <string name="hi">Hi, </string>
+    <string name="your_email">Your Email</string>
+
+    <!-- Home -->
+    <string name="profile">Profile </string>
+    <string name="search">Search </string>
+    <string name="cinerec">CineRec </string>
+    <string name="home">Home </string>
+    <string name="setting">Settings </string>
+    <string name="trending">Trending </string>
+    <string name="movie_title">Evil Dead Rise </string>
+    <string name="recommendedmovies">Recommended Movies </string>
+
+    <!-- Recommendation -->
     <string name="happy">Happy</string>
     <string name="sad">Sad</string>
     <string name="angry">Angry</string>
@@ -58,14 +107,28 @@
     <string name="motivated">Motivated</string>
     <string name="recommendation">What Is Your Mood Today :)</string>
 
+    <!-- Search -->
+    <string name="searchbar_hint">Search Movies</string>
+    <string name="search_result">Search Result</string>
 
+    <!-- Detail -->
+    <string name="story">Evil Dead is a 2013 American supernatural horror film directed by Fede Álvarez who co-wrote the screenplay with Rodo Sayagues. Dubbed a "re-imagining" of </string>
+    <string name="movie">Movie</string>
+    <string name="title_movie">EVIL DEATH RISE</string>
+    <string name="genre_movie">HORROR 2D.3D.4DX</string>
+    <string name="censor_rating">Censor Rating</string>
+    <string name="duration">Duration</string>
+    <string name="release_date">Release</string>
+    <string name="value">A</string>
+    <string name="duration_detail">1hr:38min</string>
+    <string name="date">21 April 2023</string>
+    <string name="available_in">Available in:</string>
+    <string name="english">English</string>
+    <string name="story_plot">Story Plot</string>
+    <string name="cast">Cast</string>
+    <string name="see_movie">See Movie</string>
 
-    <string name="username">username</string>
-    <string name="recommended_movies">Recommended Movies</string>
-    <string name="hey_username">Hey, Username</string>
-    <string name="home">Home</string>
-    <string name="cinerec">Cinerec</string>
-    <string name="search">Search</string>
-    <string name="setting">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

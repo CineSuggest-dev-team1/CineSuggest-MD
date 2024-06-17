@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.example.cinemasuggest.R
-import com.example.cinemasuggest.data.adapter.MovieAdapter
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.User
 import com.example.cinemasuggest.databinding.ActivitySearchBinding

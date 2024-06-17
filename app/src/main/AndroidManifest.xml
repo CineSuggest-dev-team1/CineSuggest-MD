@@ -16,7 +16,10 @@
         android:theme="@style/Theme.CinemaSuggest"
         tools:targetApi="31">
         <activity
-            android:name=".view.detail.DetailActivity"
+            android:name=".view.cinerec.DetailRecActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.DetailHomeActivity"
             android:exported="false" />
         <activity
             android:name=".view.search.SearchActivity"

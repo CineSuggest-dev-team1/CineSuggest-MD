@@ -5,7 +5,7 @@
 
     <!-- App Information -->
     <string name="app_name">CineSuggest</string>
-    <string name="version_app">Beta Version 1.0</string>
+    <string name="version_app">Alpha Version 1.0</string>
 
     <!--OnBoarding-->
     <string name="Image">Image</string>

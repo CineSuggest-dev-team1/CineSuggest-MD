@@ -1,5 +1,6 @@
 package com.example.cinemasuggest.data.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.data.response.RecommendationResponseItem
+import com.example.cinemasuggest.view.cinerec.DetailRecActivity
 
 class RecommendationsAdapter(private val recommendations: List<RecommendationResponseItem>) :
     RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
@@ -27,7 +29,7 @@ class RecommendationsAdapter(private val recommendations: List<RecommendationRes
         return recommendations.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_title)
         private val posterImageView: ImageView = itemView.findViewById(R.id.iv_poster)
 
@@ -37,6 +39,15 @@ class RecommendationsAdapter(private val recommendations: List<RecommendationRes
             Glide.with(itemView.context)
                 .load(posterUrl)
                 .into(posterImageView)
+
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, DetailRecActivity::class.java).apply {
+                    putExtra("EXTRA_POSTER", recommendation.poster)
+                    putExtra("EXTRA_TITLE", recommendation.title)
+                }
+                context.startActivity(intent)
+            }
         }
     }
 }

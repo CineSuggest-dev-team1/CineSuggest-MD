@@ -20,7 +20,6 @@ import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.User
 import com.example.cinemasuggest.databinding.ActivityHomeBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
-import com.example.cinemasuggest.view.detail.DetailActivity
 import com.example.cinemasuggest.view.login.LoginActivity
 import com.example.cinemasuggest.view.search.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -187,10 +186,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun navigateToDetail(movie: Movie) {
-        Intent(this@HomeActivity, DetailActivity::class.java).apply {
-            putExtra(DetailActivity.EXTRA_ID, movie.id)
-            putExtra(DetailActivity.EXTRA_TITLE, movie.title)
-            putExtra(DetailActivity.EXTRA_POSTER, movie.poster)
+        Intent(this@HomeActivity, DetailHomeActivity::class.java).apply {
+            putExtra(DetailHomeActivity.EXTRA_ID, movie.id)
+            putExtra(DetailHomeActivity.EXTRA_TITLE, movie.title)
+            putExtra(DetailHomeActivity.EXTRA_POSTER, movie.poster)
             startActivity(this)
         }
     }

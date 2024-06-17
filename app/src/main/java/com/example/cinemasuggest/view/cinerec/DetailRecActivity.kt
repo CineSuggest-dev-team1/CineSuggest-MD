@@ -1,36 +1,29 @@
-package com.example.cinemasuggest.view.detail
+package com.example.cinemasuggest.view.cinerec
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.cinemasuggest.databinding.ActivityDetailBinding
-import com.example.cinemasuggest.view.home.HomeActivity
+import com.example.cinemasuggest.databinding.ActivityDetailrecBinding
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
-class DetailActivity : AppCompatActivity() {
+class DetailRecActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailBinding
-
-    companion object {
-        const val EXTRA_POSTER = "extra_poster"
-        const val EXTRA_TITLE = "extra_title"
-        const val EXTRA_ID = "extra_id"
-    }
+    private lateinit var binding: ActivityDetailrecBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
+        binding = ActivityDetailrecBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Get data from intent
-        val poster = intent.getStringExtra(EXTRA_POSTER)
-        val title = intent.getStringExtra(EXTRA_TITLE)
+        // Get the data from the intent
+        val poster = intent.getStringExtra("EXTRA_POSTER")
+        val title = intent.getStringExtra("EXTRA_TITLE")
 
-        // Set data to views
+        // Set the data to views
         val posterUrl = "https://image.tmdb.org/t/p/w500$poster"
         binding.category.text = title
         Glide.with(this)
@@ -39,8 +32,7 @@ class DetailActivity : AppCompatActivity() {
 
         // Back button click listener
         binding.ibBack.setOnClickListener {
-            val intent = Intent(this@DetailActivity, HomeActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
         // See movie button click listener

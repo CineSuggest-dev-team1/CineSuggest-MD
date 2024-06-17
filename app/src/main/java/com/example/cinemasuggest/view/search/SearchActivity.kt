@@ -6,12 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.cinemasuggest.R
-import com.example.cinemasuggest.data.adapter.Movie
 import com.example.cinemasuggest.data.adapter.MovieAdapter
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.User
@@ -31,7 +27,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var db: AppDatabase
-    private lateinit var adapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,21 +58,9 @@ class SearchActivity : AppCompatActivity() {
         }
 
         // Set up RecyclerView
-        binding.rvRecommendedMovies.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
-        adapter = MovieAdapter(getDummyMovies())
-        binding.rvRecommendedMovies.adapter = adapter
 
         // Set up bottom navigation
         setupBottomNavigation()
-    }
-
-    private fun getDummyMovies(): List<Movie> {
-        // Replace this with your actual data source
-        return listOf(
-            Movie("Evil Dead Rise",  R.drawable.movie),
-            Movie("Evil Dead Rise",  R.drawable.movie),
-            Movie("Evil Dead Rise",  R.drawable.movie)
-        )
     }
 
     private fun getUserName() {

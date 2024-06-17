@@ -16,6 +16,11 @@
     <string name="action">Action</string>
     <string name="adventure">Adventure</string>
     <string name="mystery">Mystery</string>
+    <string name="animation">Animation</string>
+    <string name="war">War</string>
+    <string name="family">Family</string>
+    <string name="history">History</string>
+    <string name="tvmovie">TvMovie</string>
     <string name="drama">Drama</string>
     <string name="comedy">Comedy</string>
     <string name="crime">Crime</string>
@@ -85,9 +90,10 @@
     <string name="cinerec">CineRec </string>
     <string name="home">Home </string>
     <string name="setting">Settings </string>
-    <string name="trending">Trending </string>
+    <string name="trending">Movie That You May Like</string>
     <string name="movie_title">Evil Dead Rise </string>
-    <string name="recommendedmovies">Recommended Movies </string>
+    <string name="anothermovies">Another Movies </string>
+    <string name="recommendedmovies">Based On Your Choice :) </string>
 
     <!-- Recommendation -->
     <string name="happy">Happy</string>
@@ -112,20 +118,19 @@
     <string name="search_result">Search Result</string>
 
     <!-- Detail -->
-    <string name="story">Evil Dead is a 2013 American supernatural horror film directed by Fede Álvarez who co-wrote the screenplay with Rodo Sayagues. Dubbed a "re-imagining" of </string>
+    <string name="story">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</string>
     <string name="movie">Movie</string>
     <string name="title_movie">EVIL DEATH RISE</string>
     <string name="genre_movie">HORROR 2D.3D.4DX</string>
     <string name="censor_rating">Censor Rating</string>
     <string name="duration">Duration</string>
     <string name="release_date">Release</string>
-    <string name="value">A</string>
-    <string name="duration_detail">1hr:38min</string>
-    <string name="date">21 April 2023</string>
+    <string name="value">-</string>
+    <string name="duration_detail">-</string>
+    <string name="date">-</string>
     <string name="available_in">Available in:</string>
     <string name="english">English</string>
     <string name="story_plot">Story Plot</string>
-    <string name="cast">Cast</string>
     <string name="see_movie">See Movie</string>
 
     <!-- TODO: Remove or change this placeholder text -->

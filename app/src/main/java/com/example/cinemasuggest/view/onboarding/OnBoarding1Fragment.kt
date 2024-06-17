@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemasuggest.R
-import com.example.cinemasuggest.data.adapter.CarouselAdapter
+import com.example.cinemasuggest.data.adapter.onboarding.CarouselAdapter
 import com.example.cinemasuggest.view.login.LoginActivity
 import kotlin.random.Random
 

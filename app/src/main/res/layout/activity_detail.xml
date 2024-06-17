@@ -92,17 +92,6 @@
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-15dp"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="@string/genre_movie"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
                 <View
                     android:layout_width="320dp"
                     android:layout_height="1dp"
@@ -263,33 +252,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:text="@string/cast"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:nestedScrollingEnabled="false"
-                        android:layout_marginTop="4dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/cast" />
-
-                </LinearLayout>
-
             </LinearLayout>
 
 
@@ -299,8 +261,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="370dp"
-        android:layout_height="70dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:backgroundTint="#FF0000"
         android:fontFamily="@font/poppinsbold"
         android:layout_marginBottom="20dp"

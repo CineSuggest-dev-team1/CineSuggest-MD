@@ -3,8 +3,7 @@ package com.example.cinemasuggest.view.onboarding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cinemasuggest.R
-import com.example.cinemasuggest.data.adapter.OnBoardingAdapter
+import com.example.cinemasuggest.data.adapter.onboarding.OnBoardingAdapter
 import com.example.cinemasuggest.databinding.ActivityOnBoardingBinding
 import com.example.cinemasuggest.view.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth

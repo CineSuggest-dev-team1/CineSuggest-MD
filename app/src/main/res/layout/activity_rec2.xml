@@ -28,6 +28,7 @@
         </LinearLayout>
 
         <!-- Button Choose -->
+        <!-- Button Choose -->
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
@@ -37,6 +38,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonHappy"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,6 +52,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonSad"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,6 +67,7 @@
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonAngry"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,6 +81,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonShock"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,6 +105,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonTense"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +119,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonBored"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,6 +133,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonNervous"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,6 +148,7 @@
                 tools:ignore="TextSizeCheck" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonCheerful"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,6 +172,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonCalm"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -176,6 +186,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonJoyful"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -190,6 +201,7 @@
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonRelaxed"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -203,6 +215,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonJealous"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -226,6 +239,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonAmused"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,6 +253,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonWorried"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -252,6 +267,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonMotivated"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

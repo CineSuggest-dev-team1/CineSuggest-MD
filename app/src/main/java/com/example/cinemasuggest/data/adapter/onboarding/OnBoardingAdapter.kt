@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.data.adapter
+package com.example.cinemasuggest.data.adapter.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

@@ -14,12 +14,12 @@
         android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Hi -->
         <TextView
@@ -35,162 +35,187 @@
             android:id="@+id/tv_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsbold"
             android:layout_marginStart="2dp"
-            android:layout_weight="1"
-            android:maxLines="1"
             android:ellipsize="end"
+            android:fontFamily="@font/poppinsbold"
+            android:maxLines="1"
             android:text="@string/username"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
         <!-- Search -->
         <ImageButton
             android:id="@+id/btn_search"
-            android:src="@drawable/baseline_person_24"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-            android:contentDescription="@string/profile" />
+            android:background="@drawable/button_circle"
+            android:contentDescription="@string/profile"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_person_24" />
 
         <!-- Logout -->
         <ImageButton
             android:id="@+id/btn_logout"
-            android:src="@drawable/baseline_logout_24"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-            android:contentDescription="@string/logout" />
+            android:background="@drawable/button_circle"
+            android:contentDescription="@string/logout"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_logout_24" />
     </LinearLayout>
 
-    <!-- Movie Preview -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="355dp"
-        android:layout_height="300dp"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="50dp"
-        android:elevation="10dp"
+    <!-- Scrollable area for movie previews -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHello"
-        app:layout_constraintVertical_bias="0.12">
+        app:layout_constraintTop_toBottomOf="@+id/textHello">
 
-        <FrameLayout
-            android:id="@+id/trendingMov"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/roundedImage"
+            <!-- Movie Preview 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/movie"
-                android:contentDescription="@string/Image" />
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="50dp">
 
-            <LinearLayout
+                <FrameLayout
+                    android:id="@+id/trendingMov"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/roundedImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/Image" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/border_body"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/trendingText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:text="@string/trending"
+                            android:textColor="@color/red"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/movieTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Movie Preview 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/border_body"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="50dp">
 
-                <TextView
-                    android:id="@+id/trendingText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppinsbold"
-                    android:text="@string/trending"
-                    android:textColor="@color/red"
-                    android:textStyle="bold"
-                    android:layout_marginStart="4dp"
-                    android:textSize="16sp" />
+                <FrameLayout
+                    android:id="@+id/trendingMov2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/movieTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/movie_title"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp" />
+                    <ImageView
+                        android:id="@+id/roundedImage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/Image" />
 
-                <TextView
-                    android:id="@+id/movieDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="@string/horror"
-                    android:textSize="14sp"
-                    android:paddingBottom="8dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/border_body"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/trendingText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:text="@string/trending"
+                            android:textColor="@color/red"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-        </FrameLayout>
-    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/movieTitle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-    <!--  Recommended Movie Recycle View -->
-    <TextView
-        android:id="@+id/tv_recommendedMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/recommendedmovies"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RvCarousel1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
-        android:orientation="horizontal"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recommendedMovie"
-        app:layout_constraintVertical_bias="0.287"
-        tools:listitem="@layout/item_movie2" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Bottom Navbar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_background"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/bottom_background"
         android:elevation="2dp"
+        android:stateListAnimator="@animator/bottom_nav_item_state_list_animator"
         app:itemIconSize="30dp"
         app:itemIconTint="@drawable/item_selector"
         app:itemRippleColor="@android:color/transparent"
-        app:menu="@menu/bottom_menu"
-        android:stateListAnimator="@animator/bottom_nav_item_state_list_animator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
     <!-- Loading Overlay -->
     <View
@@ -207,10 +232,10 @@
     <!-- Progress Bar-->
     <ProgressBar
         android:id="@+id/progressBar"
-        android:indeterminateDrawable="@drawable/progress_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:indeterminateDrawable="@drawable/progress_bg"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

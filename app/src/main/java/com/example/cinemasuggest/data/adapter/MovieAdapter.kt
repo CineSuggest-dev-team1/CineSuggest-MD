@@ -1,32 +1,63 @@
 package com.example.cinemasuggest.data.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemasuggest.R
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.cinemasuggest.data.response.Movie
+import com.example.cinemasuggest.databinding.ItemMovie2Binding
 
-data class Movie(val title: String, val imageResId: Int)
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val movieTitle: TextView = itemView.findViewById(R.id.movieTitle)
-        val movieImage: ImageView = itemView.findViewById(R.id.movieImage)
-    }
+    private var movieList: List<Movie> = emptyList()
+    private var onMovieItemClickListener: OnMovieItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie2, parent, false)
-        return MovieViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemMovie2Binding.inflate(inflater, parent, false)
+        return MovieViewHolder(binding)
     }
+
+    override fun getItemCount(): Int = movieList.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movieList[position]
-        holder.movieTitle.text = movie.title
-        holder.movieImage.setImageResource(movie.imageResId)
+        holder.bind(movieList[position])
     }
 
-    override fun getItemCount() = movieList.size
+    fun setItems(movies: List<Movie>) {
+        movieList = movies
+        notifyDataSetChanged()
+    }
+
+    fun setOnMovieItemClickListener(listener: OnMovieItemClickListener) {
+        this.onMovieItemClickListener = listener
+    }
+
+    inner class MovieViewHolder(private val binding: ItemMovie2Binding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onMovieItemClickListener?.onMovieItemClick(movieList[position])
+                }
+            }
+        }
+
+        fun bind(movie: Movie) {
+            with(binding) {
+                Glide.with(itemView)
+                    .load(movie.poster)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(movieImage)
+                movieTitle.text = movie.title
+            }
+        }
+    }
+
+    interface OnMovieItemClickListener {
+        fun onMovieItemClick(movie: Movie)
+    }
 }

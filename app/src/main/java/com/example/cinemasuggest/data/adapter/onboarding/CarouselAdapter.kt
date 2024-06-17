@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.data.adapter
+package com.example.cinemasuggest.data.adapter.onboarding
 
 import android.view.LayoutInflater
 import android.view.View

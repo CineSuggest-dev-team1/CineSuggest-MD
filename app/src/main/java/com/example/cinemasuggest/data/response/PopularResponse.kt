@@ -2,12 +2,6 @@ package com.example.cinemasuggest.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class PopularResponse(
-
-	@field:SerializedName("results")
-	val results: List<Movie>
-)
-
 data class Movie(
 
 	@field:SerializedName("id")

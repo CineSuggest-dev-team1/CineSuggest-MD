@@ -17,9 +17,10 @@ import com.example.cinemasuggest.data.adapter.RecommendationsAdapter
 import com.example.cinemasuggest.data.response.RecommendationResponseItem
 import com.example.cinemasuggest.data.retrofit.ApiConfig
 import com.example.cinemasuggest.data.room.AppDatabase
-import com.example.cinemasuggest.data.room.User
+import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.databinding.ActivityRecBinding
 import com.example.cinemasuggest.view.home.HomeActivity
+import com.example.cinemasuggest.view.home.SavedMovieActivity
 import com.example.cinemasuggest.view.login.LoginActivity
 import com.example.cinemasuggest.view.search.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -55,6 +56,11 @@ class RecActivity : AppCompatActivity() {
 
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
+        }
+        
+        binding.btnSaved.setOnClickListener {
+            val intent = Intent(this, SavedMovieActivity::class.java)
+            startActivity(intent)
         }
 
         val selectedGenres = intent.getStringExtra("selectedGenres")

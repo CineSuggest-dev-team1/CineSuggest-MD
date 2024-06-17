@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.view.cinerec
+package com.example.cinemasuggest.view.search
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,7 @@ import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.recommendation.UserMovie
-import com.example.cinemasuggest.databinding.ActivityDetailrecBinding
+import com.example.cinemasuggest.databinding.ActivityDetailSearchBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,43 +18,38 @@ import kotlinx.coroutines.withContext
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
-class DetailRecActivity : AppCompatActivity() {
+class DetailSearchActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailrecBinding
+    private lateinit var binding: ActivityDetailSearchBinding
     private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailrecBinding.inflate(layoutInflater)
+        binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "cinema-suggest-db")
             .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
 
-        // Get the data from the intent
+        val title = intent.getStringExtra("EXTRA_TITLE") ?: "No Title"
         val poster = intent.getStringExtra("EXTRA_POSTER")
-        val title = intent.getStringExtra("EXTRA_TITLE")
 
-        // Set the data to views
-        val posterUrl = "https://image.tmdb.org/t/p/w500$poster"
         binding.category.text = title
-        Glide.with(this)
-            .load(posterUrl)
-            .into(binding.imageView)
+        if (poster != null) {
+            Glide.with(this).load("https://image.tmdb.org/t/p/w500$poster").into(binding.imageView)
+        }
 
-        // Back button click listener
         binding.ibBack.setOnClickListener {
             finish()
         }
 
-        // See movie button click listener
-        binding.button.setOnClickListener {
-            showConfirmationDialog(title)
-        }
-
         binding.ibSave.setOnClickListener {
             saveMovie(title, poster)
+        }
+
+        binding.button.setOnClickListener {
+            showConfirmationDialog(title)
         }
     }
 

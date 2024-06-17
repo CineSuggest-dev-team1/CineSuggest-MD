@@ -1,9 +1,10 @@
-package com.example.cinemasuggest.data.room
+package com.example.cinemasuggest.data.room.auth
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.cinemasuggest.data.room.auth.User
 
 @Dao
 interface UserDao {

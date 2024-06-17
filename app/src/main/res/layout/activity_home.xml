@@ -44,17 +44,18 @@
             android:layout_weight="1" />
 
         <!-- Search -->
+
+        <!-- Logout -->
         <ImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/btn_saved"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/button_circle"
             android:contentDescription="@string/profile"
             android:scaleType="centerInside"
-            android:src="@drawable/baseline_person_24" />
+            android:src="@drawable/baseline_save_alt_24" />
 
-        <!-- Logout -->
         <ImageButton
             android:id="@+id/btn_logout"
             android:layout_width="50dp"

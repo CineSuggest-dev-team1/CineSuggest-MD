@@ -51,6 +51,17 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
+        <!-- New Image Button -->
+        <ImageButton
+            android:id="@+id/btn_saved"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_circle"
+            android:contentDescription="@string/here_s_your_saved_movies"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_save_alt_24" />
+
         <!-- Logout -->
         <ImageButton
             android:id="@+id/btn_logout"

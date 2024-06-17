@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.data.room
+package com.example.cinemasuggest.data.room.auth
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

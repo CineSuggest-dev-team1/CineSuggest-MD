@@ -2,11 +2,6 @@ package com.example.cinemasuggest.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class RecommendationResponse(
-
-	@field:SerializedName("RecommendationResponse")
-	val recommendationResponse: List<RecommendationResponseItem>
-)
 
 data class RecommendationResponseItem(
 

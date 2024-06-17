@@ -20,5 +20,5 @@ interface ApiService {
     @GET("movie/search")
     fun searchMovies(
         @Query("title") title: String
-    ): Call<SearchResponseItem>
+    ): Call<List<SearchResponseItem>>
 }

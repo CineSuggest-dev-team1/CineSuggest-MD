@@ -6,10 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.cinemasuggest.R
+import com.example.cinemasuggest.data.retrofit.ApiConfig
+import com.example.cinemasuggest.data.response.SearchResponseItem
 import com.example.cinemasuggest.data.room.AppDatabase
-import com.example.cinemasuggest.data.room.User
+import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.databinding.ActivitySearchBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
 import com.example.cinemasuggest.view.home.HomeActivity
@@ -19,6 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchActivity : AppCompatActivity() {
 
@@ -51,15 +57,43 @@ class SearchActivity : AppCompatActivity() {
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
                     searchView.hide()
-                    Toast.makeText(this@SearchActivity, searchView.text, Toast.LENGTH_SHORT).show()
+                    performSearch(searchView.text.toString())
                     false
                 }
         }
 
         // Set up RecyclerView
+        binding.rvRecommendedMovies.layoutManager = LinearLayoutManager(this)
+
+        // Fetch and display movies with title "Avengers"
+        performSearch("Avengers")
 
         // Set up bottom navigation
         setupBottomNavigation()
+    }
+
+    private fun performSearch(query: String) {
+        showProgressBar()
+        val call = ApiConfig.apiService.searchMovies(query)
+        call.enqueue(object : Callback<List<SearchResponseItem>> {
+            override fun onResponse(
+                call: Call<List<SearchResponseItem>>,
+                response: Response<List<SearchResponseItem>>
+            ) {
+                hideProgressBar()
+                if (response.isSuccessful) {
+                    val searchResults = response.body() ?: emptyList()
+                    binding.rvRecommendedMovies.adapter = SearchMoviesAdapter(searchResults)
+                } else {
+                    Toast.makeText(this@SearchActivity, "Failed to get search results.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<SearchResponseItem>>, t: Throwable) {
+                hideProgressBar()
+                Toast.makeText(this@SearchActivity, "An error occurred: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getUserName() {

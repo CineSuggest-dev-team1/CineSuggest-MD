@@ -17,7 +17,7 @@ import com.example.cinemasuggest.R
 import com.example.cinemasuggest.data.response.Movie
 import com.example.cinemasuggest.data.retrofit.ApiConfig
 import com.example.cinemasuggest.data.room.AppDatabase
-import com.example.cinemasuggest.data.room.User
+import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.databinding.ActivityHomeBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
 import com.example.cinemasuggest.view.login.LoginActivity
@@ -48,6 +48,7 @@ class HomeActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "cinema-suggest-db")
+            .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
 
         setupBottomNavigation()
@@ -56,6 +57,12 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
+        }
+
+        // Add the OnClickListener for the button
+        binding.btnSaved.setOnClickListener {
+            val intent = Intent(this, SavedMovieActivity::class.java)
+            startActivity(intent)
         }
 
         binding.root.setOnTouchListener(object : OnSwipeTouchListener(this@HomeActivity) {

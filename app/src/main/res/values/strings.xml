@@ -131,9 +131,11 @@
     <string name="available_in">Available in:</string>
     <string name="english">English</string>
     <string name="story_plot">Story Plot</string>
-    <string name="see_movie">See Movie</string>
+    <string name="see_movie">Movie Details</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="here_s_your_saved_movies">Here\'s your saved movies</string>
+    <string name="delete">Delete All</string>
 
 </resources>

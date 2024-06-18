@@ -141,5 +141,6 @@
     <string name="Profile">Here Is Your Profile</string>
     <string name="edit_profile">Edit Your Profile Here :)</string>
     <string name="edit_button">Edit Profile</string>
+    <string name="title">Title</string>
 
 </resources>

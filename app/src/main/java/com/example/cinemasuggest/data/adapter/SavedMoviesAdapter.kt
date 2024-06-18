@@ -10,8 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.data.room.recommendation.UserMovie
 
-class SavedMoviesAdapter(private val savedMovies: List<UserMovie>) :
-    RecyclerView.Adapter<SavedMoviesAdapter.ViewHolder>() {
+class SavedMoviesAdapter(
+    private val savedMovies: List<UserMovie>,
+    private val onItemClick: (UserMovie) -> Unit
+) : RecyclerView.Adapter<SavedMoviesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_saved_movie, parent, false)
@@ -23,11 +25,9 @@ class SavedMoviesAdapter(private val savedMovies: List<UserMovie>) :
         holder.bind(savedMovie)
     }
 
-    override fun getItemCount(): Int {
-        return savedMovies.size
-    }
+    override fun getItemCount(): Int = savedMovies.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_title)
         private val posterImageView: ImageView = itemView.findViewById(R.id.iv_poster)
 
@@ -37,6 +37,8 @@ class SavedMoviesAdapter(private val savedMovies: List<UserMovie>) :
             Glide.with(itemView.context)
                 .load(posterUrl)
                 .into(posterImageView)
+
+            itemView.setOnClickListener { onItemClick(userMovie) }
         }
     }
 }

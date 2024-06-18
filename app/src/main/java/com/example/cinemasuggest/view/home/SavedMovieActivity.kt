@@ -1,5 +1,6 @@
 package com.example.cinemasuggest.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.room.Room
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.databinding.ActivitySavedMovieBinding
 import com.example.cinemasuggest.data.adapter.SavedMoviesAdapter
+import com.example.cinemasuggest.data.room.recommendation.UserMovie
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -52,7 +54,9 @@ class SavedMovieActivity : AppCompatActivity() {
             val savedMovies = withContext(Dispatchers.IO) {
                 db.userMovieDao().getAllMovies(userId)
             }
-            binding.rvSavedMovies.adapter = SavedMoviesAdapter(savedMovies)
+            binding.rvSavedMovies.adapter = SavedMoviesAdapter(savedMovies) { movie ->
+                openMovieDetail(movie)
+            }
             hideProgressBar()
         }
     }
@@ -70,6 +74,15 @@ class SavedMovieActivity : AppCompatActivity() {
                 hideProgressBar()
             }
         }
+    }
+
+    private fun openMovieDetail(movie: UserMovie) {
+        val intent = Intent(this, SavedDetailActivity::class.java).apply {
+            putExtra(SavedDetailActivity.EXTRA_POSTER, movie.posterPath)
+            putExtra(SavedDetailActivity.EXTRA_TITLE, movie.title)
+            putExtra(SavedDetailActivity.EXTRA_ID, movie.movieId)
+        }
+        startActivity(intent)
     }
 
     private fun showProgressBar() {

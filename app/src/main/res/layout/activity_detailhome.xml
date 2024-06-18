@@ -39,7 +39,6 @@
                     android:background="@drawable/rounded_bottom"
                     android:contentDescription="@string/movie"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/movie"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.6"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +60,21 @@
                 android:src="@drawable/baseline_arrow_back"
                 android:background="@drawable/button_background"
                 android:contentDescription="back"/>
+
+            <ImageButton
+                android:id="@+id/ib_save"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="300dp"
+                app:layout_constraintBottom_toTopOf="@+id/body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/image"
+                android:layout_marginBottom="180dp"
+                android:layout_marginRight="300dp"
+                android:src="@drawable/baseline_save_alt_24"
+                android:background="@drawable/button_background"
+                android:contentDescription="save"/>
 
             <LinearLayout
                 android:id="@+id/body"
@@ -87,7 +101,7 @@
                     android:fontFamily="@font/poppinsbold"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="8dp"
-                    android:text="@string/title_movie"
+                    android:text="@string/title"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />

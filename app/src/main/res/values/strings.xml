@@ -138,5 +138,8 @@
     <string name="here_s_your_saved_movies">Here\'s your saved movies</string>
     <string name="delete">Delete All</string>
     <string name="loading">Loading...</string>
+    <string name="Profile">Here Is Your Profile</string>
+    <string name="edit_profile">Edit Your Profile Here :)</string>
+    <string name="edit_button">Edit Profile</string>
 
 </resources>

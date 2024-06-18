@@ -1,6 +1,5 @@
 package com.example.cinemasuggest.view.home
 
-import com.example.cinemasuggest.utils.OnSwipeTouchListener
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -19,9 +18,11 @@ import com.example.cinemasuggest.data.retrofit.ApiConfig
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.databinding.ActivityHomeBinding
+import com.example.cinemasuggest.utils.OnSwipeTouchListener
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
 import com.example.cinemasuggest.view.login.LoginActivity
 import com.example.cinemasuggest.view.search.SearchActivity
+import com.example.cinemasuggest.view.setting.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -289,6 +290,9 @@ class HomeActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_settings -> {
+                    val intent = Intent(this@HomeActivity, SettingsActivity::class.java)
+                    startActivityForResult(intent, SETTINGS_REQUEST_CODE)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -313,5 +317,18 @@ class HomeActivity : AppCompatActivity() {
         binding.loadingOverlay.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
-}
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SETTINGS_REQUEST_CODE && resultCode == RESULT_OK) {
+            val updatedName = data?.getStringExtra("updatedName")
+            if (!updatedName.isNullOrEmpty()) {
+                binding.tvUsername.text = updatedName
+            }
+        }
+    }
+
+    companion object {
+        private const val SETTINGS_REQUEST_CODE = 1001
+    }
+}

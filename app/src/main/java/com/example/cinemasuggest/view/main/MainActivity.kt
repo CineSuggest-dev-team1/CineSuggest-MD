@@ -16,6 +16,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.view.home.HomeActivity
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         // Check the flag before setting the content view
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)

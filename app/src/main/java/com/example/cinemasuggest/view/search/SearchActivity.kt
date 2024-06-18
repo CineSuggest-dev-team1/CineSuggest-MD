@@ -16,6 +16,7 @@ import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.databinding.ActivitySearchBinding
 import com.example.cinemasuggest.view.cinerec.Rec1Activity
 import com.example.cinemasuggest.view.home.HomeActivity
+import com.example.cinemasuggest.view.setting.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -162,7 +163,10 @@ class SearchActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_settings -> {
-                    // Add intent for settings activity if exists
+                    val intent = Intent(this@SearchActivity, SettingsActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
             }

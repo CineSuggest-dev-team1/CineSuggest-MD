@@ -3,6 +3,7 @@ package com.example.cinemasuggest.view.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,6 +63,18 @@ class SavedMovieActivity : AppCompatActivity() {
     }
 
     private fun deleteAllMovies() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Are you sure you want to delete all saved movies?")
+            .setPositiveButton("Yes") { _, _ ->
+                performDeleteAllMovies()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create().show()
+    }
+
+    private fun performDeleteAllMovies() {
         showProgressBar()
         val userId = auth.currentUser?.uid ?: return
         lifecycleScope.launch {

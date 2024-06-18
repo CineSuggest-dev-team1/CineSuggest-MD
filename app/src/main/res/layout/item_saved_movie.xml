@@ -17,8 +17,9 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_poster"
+            android:layout_marginStart="4dp"
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/movie_title"
-            android:textSize="20sp"/>
+            android:textSize="24sp"/>
 
     </LinearLayout>
 

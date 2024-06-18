@@ -58,7 +58,7 @@ class RecActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
         }
-        
+
         binding.btnSaved.setOnClickListener {
             val intent = Intent(this, SavedMovieActivity::class.java)
             startActivity(intent)
@@ -88,8 +88,9 @@ class RecActivity : AppCompatActivity() {
             ) {
                 hideProgressBar()
                 if (response.isSuccessful) {
-                    val recommendations = response.body()
+                    val recommendations = response.body()?.toMutableList()
                     Log.d("RecActivity", "Recommendations received: ${recommendations?.size} items")
+                    recommendations?.shuffle()
                     binding.rvRecommended.adapter = recommendations?.let { RecommendationsAdapter(it) }
                 } else {
                     Toast.makeText(this@RecActivity, "Failed to get recommendations.", Toast.LENGTH_SHORT).show()

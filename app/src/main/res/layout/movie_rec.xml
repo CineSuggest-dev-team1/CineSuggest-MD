@@ -12,9 +12,9 @@
     android:background="@android:color/transparent">
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="250dp"
-        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <ImageView
@@ -23,19 +23,18 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@drawable/movie"
-            android:layout_gravity="center"
             android:contentDescription="@string/Image" />
 
         <TextView
             android:id="@+id/movieTitle"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppinsregular"
-            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:fontFamily="@font/poppinsbold"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
+            android:layout_weight="1"
             android:text="@string/movie_title"
-            android:textAlignment="center"
-            android:textSize="14sp"/>
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Cinerec.Rec1Activity">
+    tools:context=".view.cinerec.Rec1Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonAction"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonAdventure"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,19 +64,21 @@
                 android:textSize="11sp"/>
 
             <ToggleButton
+                android:id="@+id/toggleButtonAnimation"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/mystery"
-                android:textOff="@string/mystery"
-                android:textOn="@string/mystery"
+                android:text="@string/animation"
+                android:textOff="@string/animation"
+                android:textOn="@string/animation"
                 android:textAllCaps="false"
                 android:textColor="@color/toggle_text_color"
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonDrama"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,6 +102,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonComedy"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonCrime"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,6 +130,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonDocumentary"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,6 +145,7 @@
                 tools:ignore="TextSizeCheck" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonSports"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,6 +169,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonFantasy"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -174,20 +183,22 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonMystery"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:text="@string/horror"
-                android:textOff="@string/horror"
-                android:textOn="@string/horror"
+                android:text="@string/mystery"
+                android:textOff="@string/mystery"
+                android:textOn="@string/mystery"
                 android:textAllCaps="false"
                 android:textColor="@color/toggle_text_color"
                 android:textSize="11sp"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonMusic"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -201,6 +212,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonWestern"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -224,6 +236,7 @@
             android:gravity="center">
 
             <ToggleButton
+                android:id="@+id/toggleButtonHorror"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -237,6 +250,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonThriller"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -250,6 +264,7 @@
                 android:textSize="11sp" />
 
             <ToggleButton
+                android:id="@+id/toggleButtonScifi"
                 style="@style/GenreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -261,7 +276,75 @@
                 android:textAllCaps="false"
                 android:textColor="@color/toggle_text_color"
                 android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonWar"
+                style="@style/GenreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/war"
+                android:textOff="@string/war"
+                android:textOn="@string/war"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="11sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_marginTop="-8dp"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/toggleButtonFamily"
+                style="@style/GenreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/family"
+                android:textOff="@string/family"
+                android:textOn="@string/family"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonHistory"
+                style="@style/GenreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/history"
+                android:textOff="@string/history"
+                android:textOn="@string/history"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonTvMovie"
+                style="@style/GenreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/tvmovie"
+                android:textOff="@string/tvmovie"
+                android:textOn="@string/tvmovie"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
 
         <TextView
             android:layout_width="258dp"

@@ -1,4 +1,4 @@
-package com.dicoding.cinemasuggest.data.adapter
+package com.dicoding.cinesuggest.data.adapter.Onboarding
 
 import android.view.LayoutInflater
 import android.view.View

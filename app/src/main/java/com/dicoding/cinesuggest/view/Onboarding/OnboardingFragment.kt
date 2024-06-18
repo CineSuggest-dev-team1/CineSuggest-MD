@@ -18,7 +18,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.cinemasuggest.data.adapter.CarouselAdapter
+import com.dicoding.cinesuggest.data.adapter.Onboarding.CarouselAdapter
 import com.dicoding.cinesuggest.R
 import com.dicoding.cinesuggest.view.Login.LoginActivity
 import kotlin.random.Random

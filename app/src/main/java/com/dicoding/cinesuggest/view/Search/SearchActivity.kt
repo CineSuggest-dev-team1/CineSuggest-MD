@@ -3,11 +3,15 @@ package com.dicoding.cinesuggest.view.Search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
+import com.dicoding.cinemasuggest.data.adapter.SearchAdapter
+import com.dicoding.cinemasuggest.data.response.SearchResponseItem
+import com.dicoding.cinemasuggest.data.retrofit.ApiConfig
 import com.dicoding.cinesuggest.R
 import com.dicoding.cinesuggest.databinding.ActivitySearchBinding
 import com.dicoding.cinesuggest.view.Cinerec.Rec1Activity
@@ -22,13 +26,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var db: AppDatabase
-    private lateinit var adapter: MovieAdapter
+    private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +53,7 @@ class SearchActivity : AppCompatActivity() {
         // Get user name
         showProgressBar()
         getUserName()
+        setupRecyclerView()
 
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
@@ -54,27 +62,52 @@ class SearchActivity : AppCompatActivity() {
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
                     searchView.hide()
-                    Toast.makeText(this@SearchActivity, searchView.text, Toast.LENGTH_SHORT).show()
+                    performSearch()
                     false
                 }
         }
-
-        // Set up RecyclerView
-        binding.rvRecommendedMovies.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
-        adapter = MovieAdapter(getDummyMovies())
-        binding.rvRecommendedMovies.adapter = adapter
 
         // Set up bottom navigation
         setupBottomNavigation()
     }
 
-    private fun getDummyMovies(): List<Movie> {
-        // Replace this with your actual data source
-        return listOf(
-            Movie("Evil Dead Rise",  R.drawable.movie),
-            Movie("Evil Dead Rise",  R.drawable.movie),
-            Movie("Evil Dead Rise",  R.drawable.movie)
-        )
+    private fun setupRecyclerView() {
+        searchAdapter = SearchAdapter()
+        binding.rvRecommendedMovies.apply {
+            layoutManager = GridLayoutManager(this@SearchActivity, 2)
+            adapter = searchAdapter
+        }
+    }
+
+    private fun performSearch() {
+        showProgressBar()
+        val searchText = binding.searchBar.text.toString()
+        val client = ApiConfig.apiService.searchMovies(searchText)
+        client.enqueue(object : Callback<List<SearchResponseItem>> {
+            override fun onResponse(
+                call: Call<List<SearchResponseItem>>,
+                response: Response<List<SearchResponseItem>>
+            ) {
+                hideProgressBar()
+                if (response.isSuccessful) {
+                    val responseItem = response.body()
+                    if (responseItem != null) {
+                        setMovie(responseItem)
+                    }
+                } else {
+                    Toast.makeText(this@SearchActivity, "Failed to retrieve search results", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<SearchResponseItem>>, t: Throwable) {
+                hideProgressBar()
+                Log.e(TAG, "OnFailure: ${t.message}")
+            }
+        })
+    }
+
+    private fun setMovie(movies: List<SearchResponseItem>){
+        searchAdapter.setData(movies)
     }
 
     private fun getUserName() {
@@ -159,5 +192,9 @@ class SearchActivity : AppCompatActivity() {
     private fun hideProgressBar() {
         binding.loadingOverlay.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
+    }
+
+    companion object{
+        private val TAG = "SearchActivity"
     }
 }

@@ -3,9 +3,7 @@ package com.dicoding.cinesuggest.view.Onboarding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.dicoding.cinemasuggest.data.adapter.OnBoardingAdapter
-import com.dicoding.cinesuggest.R
+import com.dicoding.cinesuggest.data.adapter.Onboarding.OnBoardingAdapter
 import com.dicoding.cinesuggest.databinding.ActivityOnboardingBinding
 import com.dicoding.cinesuggest.view.Main.MainActivity
 import com.google.firebase.auth.FirebaseAuth

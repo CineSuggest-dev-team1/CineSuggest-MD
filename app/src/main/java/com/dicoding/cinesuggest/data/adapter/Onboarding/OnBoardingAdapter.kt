@@ -1,4 +1,4 @@
-package com.dicoding.cinemasuggest.data.adapter
+package com.dicoding.cinesuggest.data.adapter.Onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

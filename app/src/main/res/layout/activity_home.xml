@@ -99,6 +99,7 @@
 
                     <ImageView
                         android:id="@+id/roundedImage"
+                        android:src="@drawable/loading"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -125,6 +126,7 @@
 
                         <TextView
                             android:id="@+id/movieTitle"
+                            android:text="@string/loading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
@@ -155,6 +157,7 @@
 
                     <ImageView
                         android:id="@+id/roundedImage2"
+                        android:src="@drawable/loading"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -181,6 +184,7 @@
 
                         <TextView
                             android:id="@+id/movieTitle2"
+                            android:text="@string/loading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"

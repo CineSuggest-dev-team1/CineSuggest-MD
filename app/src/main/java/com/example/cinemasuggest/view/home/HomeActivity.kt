@@ -216,7 +216,7 @@ class HomeActivity : AppCompatActivity() {
                         firestore.collection("users").document(uid).get()
                             .addOnSuccessListener { document ->
                                 hideProgressBar()
-                                if (document != null) {
+                                if (document != null && document.exists()) {
                                     val name = document.getString("name") ?: "Unknown User"
                                     binding.tvUsername.text = name
                                     saveUserToLocalDb(uid, name)

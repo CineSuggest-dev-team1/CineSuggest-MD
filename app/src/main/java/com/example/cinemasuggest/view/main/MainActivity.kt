@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.CredentialManager
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.example.cinemasuggest.databinding.ActivityMainBinding
 import com.example.cinemasuggest.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -15,15 +16,20 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import com.example.cinemasuggest.data.room.AppDatabase
+import com.example.cinemasuggest.data.room.auth.User
 import com.example.cinemasuggest.view.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +49,12 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+
+        // Initialize the database
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "cinema-suggest-db"
+        ).build()
 
         // Check if user is logged in
         if (auth.currentUser == null) {
@@ -96,9 +108,11 @@ class MainActivity : AppCompatActivity() {
         firestore.collection("users").document(user.uid).get()
             .addOnSuccessListener { document ->
                 hideProgressBar()
-                if (!document.exists()) {
+                if (!document.exists() || document.getString("name").isNullOrEmpty() || document.getString("phone").isNullOrEmpty() || document.getString("city").isNullOrEmpty()) {
                     saveUserData()
                 } else {
+                    val name = document.getString("name")
+                    saveUserToLocalDb(user.uid, name!!)
                     navigateToHome()
                 }
             }
@@ -121,10 +135,11 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 hideProgressBar()
                 val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-                with (sharedPref.edit()) {
+                with(sharedPref.edit()) {
                     putBoolean("isUserDataSaved", true)
                     apply()
                 }
+                saveUserToLocalDb(user.uid, userData["name"]!!)
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
@@ -134,6 +149,14 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    private fun saveUserToLocalDb(uid: String, name: String) {
+        val user = User(uid, name)
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                db.userDao().insert(user)
+            }
+        }
+    }
 
     private fun checkUserData(uid: String) {
         firestore.collection("users").document(uid).get()

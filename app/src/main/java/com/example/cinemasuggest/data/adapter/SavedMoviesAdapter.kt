@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.view.home.adapters
+package com.example.cinemasuggest.data.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +33,7 @@ class SavedMoviesAdapter(private val savedMovies: List<UserMovie>) :
 
         fun bind(userMovie: UserMovie) {
             titleTextView.text = userMovie.title
-            val posterUrl = "https://image.tmdb.org/t/p/w500${userMovie.poster}"
+            val posterUrl = "https://image.tmdb.org/t/p/w500${userMovie.posterPath}"
             Glide.with(itemView.context)
                 .load(posterUrl)
                 .into(posterImageView)

@@ -314,3 +314,4 @@ class HomeActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.GONE
     }
 }
+

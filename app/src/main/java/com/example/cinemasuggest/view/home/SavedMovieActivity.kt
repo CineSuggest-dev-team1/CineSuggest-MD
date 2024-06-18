@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.databinding.ActivitySavedMovieBinding
-import com.example.cinemasuggest.view.home.adapters.SavedMoviesAdapter
+import com.example.cinemasuggest.data.adapter.SavedMoviesAdapter
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -18,6 +19,7 @@ class SavedMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySavedMovieBinding
     private lateinit var db: AppDatabase
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,8 @@ class SavedMovieActivity : AppCompatActivity() {
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "cinema-suggest-db")
             .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
+
+        auth = FirebaseAuth.getInstance()
 
         binding.rvSavedMovies.layoutManager = LinearLayoutManager(this)
 
@@ -43,9 +47,10 @@ class SavedMovieActivity : AppCompatActivity() {
 
     private fun loadSavedMovies() {
         showProgressBar()
+        val userId = auth.currentUser?.uid ?: return
         lifecycleScope.launch {
             val savedMovies = withContext(Dispatchers.IO) {
-                db.userMovieDao().getAllMovies()
+                db.userMovieDao().getAllMovies(userId)
             }
             binding.rvSavedMovies.adapter = SavedMoviesAdapter(savedMovies)
             hideProgressBar()
@@ -54,13 +59,14 @@ class SavedMovieActivity : AppCompatActivity() {
 
     private fun deleteAllMovies() {
         showProgressBar()
+        val userId = auth.currentUser?.uid ?: return
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                db.userMovieDao().deleteAllMovies()
+                db.userMovieDao().deleteAllMovies(userId)
             }
             withContext(Dispatchers.Main) {
                 Snackbar.make(binding.root, "All movies deleted", Snackbar.LENGTH_SHORT).show()
-                loadSavedMovies()  // Refresh the list
+                loadSavedMovies()
                 hideProgressBar()
             }
         }

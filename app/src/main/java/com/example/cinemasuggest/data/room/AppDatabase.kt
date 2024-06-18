@@ -9,7 +9,7 @@ import com.example.cinemasuggest.data.room.auth.UserDao
 import com.example.cinemasuggest.data.room.recommendation.UserMovie
 import com.example.cinemasuggest.data.room.recommendation.UserMovieDao
 
-@Database(entities = [User::class, UserMovie::class], version = 2)
+@Database(entities = [User::class, UserMovie::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun userMovieDao(): UserMovieDao

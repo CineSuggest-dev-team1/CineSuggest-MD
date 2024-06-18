@@ -12,6 +12,7 @@ import com.example.cinemasuggest.data.room.AppDatabase
 import com.example.cinemasuggest.data.room.recommendation.UserMovie
 import com.example.cinemasuggest.databinding.ActivityDetailSearchBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,6 +23,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailSearchBinding
     private lateinit var db: AppDatabase
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +34,11 @@ class DetailSearchActivity : AppCompatActivity() {
             .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
 
+        auth = FirebaseAuth.getInstance()
+
         val title = intent.getStringExtra("EXTRA_TITLE") ?: "No Title"
         val poster = intent.getStringExtra("EXTRA_POSTER")
+        val movieId = intent.getStringExtra("EXTRA_MOVIE_ID") ?: ""
 
         binding.category.text = title
         if (poster != null) {
@@ -45,7 +50,7 @@ class DetailSearchActivity : AppCompatActivity() {
         }
 
         binding.ibSave.setOnClickListener {
-            saveMovie(title, poster)
+            saveMovie(title, poster, movieId)
         }
 
         binding.button.setOnClickListener {
@@ -53,16 +58,17 @@ class DetailSearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveMovie(title: String?, poster: String?) {
+    private fun saveMovie(title: String?, poster: String?, movieId: String) {
+        val userId = auth.currentUser?.uid ?: return
         if (title == null || poster == null) {
             Snackbar.make(binding.root, "Failed to save movie", Snackbar.LENGTH_SHORT).show()
             return
         }
 
-        val userMovie = UserMovie(title = title, poster = poster)
+        val userMovie = UserMovie(userId = userId, movieId = movieId, title = title, posterPath = poster)
         lifecycleScope.launch {
             val existingMovie = withContext(Dispatchers.IO) {
-                db.userMovieDao().getMovieByTitle(title)
+                db.userMovieDao().getMovieByTitle(title, userId)
             }
             if (existingMovie != null) {
                 withContext(Dispatchers.Main) {

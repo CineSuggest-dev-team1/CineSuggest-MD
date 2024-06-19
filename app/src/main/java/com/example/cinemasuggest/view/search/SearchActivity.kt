@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.cinemasuggest.R
+import com.example.cinemasuggest.data.adapter.SearchMoviesAdapter
 import com.example.cinemasuggest.data.retrofit.ApiConfig
 import com.example.cinemasuggest.data.response.SearchResponseItem
 import com.example.cinemasuggest.data.room.AppDatabase
@@ -44,10 +45,8 @@ class SearchActivity : AppCompatActivity() {
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "cinema-suggest-db")
             .build()
 
-        // Set the selected item in the bottom navigation
         binding.bottomNavigationView.selectedItemId = R.id.bottom_search
 
-        // Get user name
         showProgressBar()
         getUserName()
 
@@ -63,13 +62,11 @@ class SearchActivity : AppCompatActivity() {
                 }
         }
 
-        // Set up RecyclerView
         binding.rvRecommendedMovies.layoutManager = LinearLayoutManager(this)
 
         // Fetch and display movies with title "Avengers"
         performSearch("Avengers")
 
-        // Set up bottom navigation
         setupBottomNavigation()
     }
 

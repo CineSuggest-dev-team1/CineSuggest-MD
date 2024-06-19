@@ -2,6 +2,8 @@ package com.example.cinemasuggest.view.setting
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -37,17 +39,14 @@ class SettingsActivity : AppCompatActivity() {
             .addMigrations(AppDatabase.MIGRATION_1_2)
             .build()
 
-        // Load user data
         loadUserData()
 
-        // Handle back button click
         binding.btnBack.setOnClickListener {
             val intent = Intent(this@SettingsActivity, HomeActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
-        // Handle edit button click
         binding.editButton.setOnClickListener {
             showEditConfirmationDialog()
         }
@@ -117,9 +116,11 @@ class SettingsActivity : AppCompatActivity() {
             .set(userData)
             .addOnSuccessListener {
                 hideProgressBar()
-                showSnackbar("Profile updated successfully")
+                showSnackbar("Profile updated successfully", 2000)
                 saveUserToLocalDb(uid, name)
-                navigateToHome(name)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    navigateToHome(name)
+                }, 2000) // 2 seconds delay
             }
             .addOnFailureListener {
                 hideProgressBar()
@@ -154,7 +155,7 @@ class SettingsActivity : AppCompatActivity() {
         binding.darkOverlay.visibility = View.GONE
     }
 
-    private fun showSnackbar(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    private fun showSnackbar(message: String, duration: Int = Snackbar.LENGTH_LONG) {
+        Snackbar.make(binding.root, message, duration).show()
     }
 }

@@ -37,13 +37,11 @@ class SignInActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Navigate into login
         binding.loginHereText.setOnClickListener {
             showProgressBar()
             navigateToLogin()
         }
 
-        // User input register
         binding.registerButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
@@ -67,7 +65,6 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        // User login with Google account
         binding.signInButton.setOnClickListener {
             signIn()
         }

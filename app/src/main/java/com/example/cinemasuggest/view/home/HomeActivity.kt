@@ -82,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
         Log.d("HomeActivity", "Starting fetchPopularMovies")
         showProgressBar()
 
-        // Fetch the first movie
+        // Fetching first movie
         ApiConfig.apiService.getPopularMovies().enqueue(object : Callback<Movie> {
             override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                 Log.d("HomeActivity", "First call onResponse: ${response.code()}")
@@ -90,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
                     val movie1 = response.body()
                     Log.d("HomeActivity", "First call response body: $movie1")
                     if (movie1 != null) {
-                        // Fetch the second movie
+                        // Fetching second movie
                         ApiConfig.apiService.getPopularMovies().enqueue(object : Callback<Movie> {
                             override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                                 Log.d("HomeActivity", "Second call onResponse: ${response.code()}")
@@ -102,7 +102,7 @@ class HomeActivity : AppCompatActivity() {
                                             Log.d("HomeActivity", "Movies fetched successfully: ${movie1.title}, ${movie2.title}")
                                             displayTrendingMovies(listOf(movie1, movie2))
                                         } else {
-                                            // Fetch another movie if they are the same
+                                            // Fetching another movie if movie 1 == movie 2
                                             fetchAdditionalMovie(movie1)
                                         }
                                     } else {
@@ -222,12 +222,13 @@ class HomeActivity : AppCompatActivity() {
                                     binding.tvUsername.text = name
                                     saveUserToLocalDb(uid, name)
                                 } else {
-                                    binding.tvUsername.text = "Unknown User"
+                                    binding.tvUsername.text = (getString(R.string.unknown_user))
+
                                 }
                             }
                             .addOnFailureListener {
                                 hideProgressBar()
-                                binding.tvUsername.text = "Error fetching name"
+                                binding.tvUsername.text = (getString(R.string.error_fetching_name))
                             }
                     }
                 }

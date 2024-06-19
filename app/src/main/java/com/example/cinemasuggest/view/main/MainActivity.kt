@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
-        // Check the flag before setting the content view
         val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val isUserDataSaved = sharedPref.getBoolean("isUserDataSaved", false)
 
@@ -52,13 +51,11 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // Initialize the database
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "cinema-suggest-db"
         ).build()
 
-        // Check if user is logged in
         if (auth.currentUser == null) {
             // User is not logged in, redirect to LoginActivity
             startActivity(Intent(this, LoginActivity::class.java))
@@ -69,19 +66,15 @@ class MainActivity : AppCompatActivity() {
             checkUserData(auth.currentUser!!.uid)
         }
 
-        // Disable continue button initially
         binding.continueButton.isEnabled = false
 
-        // Add TextWatchers to input fields
         addTextWatchers()
 
-        // Navigate to home
         binding.continueButton.setOnClickListener {
             showProgressBar()
             checkAndSaveUserData()
         }
 
-        // Logout
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmationDialog()
         }

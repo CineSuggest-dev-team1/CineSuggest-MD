@@ -18,7 +18,6 @@ class Rec1Activity : AppCompatActivity() {
         binding = ActivityRec1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up the back button to go to HomeActivity
         binding.tvBack.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             val options = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)

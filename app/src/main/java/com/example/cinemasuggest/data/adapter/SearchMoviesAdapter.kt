@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.view.search
+package com.example.cinemasuggest.data.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cinemasuggest.R
 import com.example.cinemasuggest.data.response.SearchResponseItem
+import com.example.cinemasuggest.view.search.DetailSearchActivity
 
 class SearchMoviesAdapter(private val searchResults: List<SearchResponseItem>) :
     RecyclerView.Adapter<SearchMoviesAdapter.ViewHolder>() {

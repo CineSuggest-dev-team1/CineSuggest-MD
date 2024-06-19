@@ -36,24 +36,20 @@ class DetailRecActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Get the data from the intent
         val poster = intent.getStringExtra("EXTRA_POSTER")
         val title = intent.getStringExtra("EXTRA_TITLE")
         val movieId = intent.getStringExtra("EXTRA_MOVIE_ID") ?: ""
 
-        // Set the data to views
         val posterUrl = "https://image.tmdb.org/t/p/w500$poster"
         binding.category.text = title
         Glide.with(this)
             .load(posterUrl)
             .into(binding.imageView)
 
-        // Back button click listener
         binding.ibBack.setOnClickListener {
             finish()
         }
 
-        // See movie button click listener
         binding.button.setOnClickListener {
             showConfirmationDialog(title)
         }

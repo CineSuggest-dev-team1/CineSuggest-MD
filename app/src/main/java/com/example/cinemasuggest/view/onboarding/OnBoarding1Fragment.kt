@@ -75,7 +75,6 @@ class OnBoarding1Fragment : Fragment() {
 
         startAutoSwipe()
 
-        // Set text with different colors
         val tvMessage: TextView = view.findViewById(R.id.tv_message)
         val fullText = getString(R.string.onboarding1)
         val spannableString = SpannableString(fullText)
@@ -91,7 +90,6 @@ class OnBoarding1Fragment : Fragment() {
 
         tvMessage.text = spannableString
 
-        // Set onClickListeners for Skip and Next buttons
         view.findViewById<View>(R.id.textViewSkip).setOnClickListener {
             navigateToLogin()
         }

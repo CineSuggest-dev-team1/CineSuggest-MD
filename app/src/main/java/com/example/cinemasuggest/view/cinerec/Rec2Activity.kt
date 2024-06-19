@@ -20,7 +20,6 @@ class Rec2Activity : AppCompatActivity() {
 
         val selectedGenres = intent.getStringExtra("selectedGenres")
 
-        // Set up the back button to go to HomeActivity
         binding.tvBack.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             val options = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)

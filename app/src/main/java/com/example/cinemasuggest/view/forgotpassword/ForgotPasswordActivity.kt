@@ -22,12 +22,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Navigate back
         binding.btnBack.setOnClickListener {
             navigateToLogin()
         }
 
-        // Reset password action
         binding.submitEmailButton.setOnClickListener {
             val email = binding.emailInput.text.toString()
             auth.sendPasswordResetEmail(email)

@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // Check if user is already logged in and navigate directly to HomeActivity if data is saved
         auth.currentUser?.let {
             val sharedPref = getSharedPreferences("UserPrefs", MODE_PRIVATE)
             val isUserDataSaved = sharedPref.getBoolean("isUserDataSaved", false)
@@ -57,19 +56,16 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Navigate to sign-in page
         binding.signInHere.setOnClickListener {
             showProgressBar()
             navigateToSignIn()
         }
 
-        // Navigate to forgot password page
         binding.forgotPasswordText.setOnClickListener {
             showProgressBar()
             navigateToForgotPassword()
         }
 
-        // User login input
         binding.loginButton.setOnClickListener {
             val email = binding.emaillogin.text.toString()
             val password = binding.passwordlogin.text.toString()
@@ -90,7 +86,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // User login with Google account
         binding.signInButton.setOnClickListener {
             signIn()
         }

@@ -66,15 +66,12 @@ class RecActivity : AppCompatActivity() {
 
         val selectedGenres = intent.getStringExtra("selectedGenres")
         val selectedMood = intent.getStringExtra("selectedMood")
-
-        // Log the genres and mood to verify they are passed correctly
         Log.d("RecActivity", "Selected Genres: $selectedGenres")
         Log.d("RecActivity", "Selected Mood: $selectedMood")
 
         binding.rvRecommended.layoutManager = LinearLayoutManager(this)
         getRecommendations(selectedGenres, selectedMood)
 
-        // Set the selected item in the bottom navigation
         binding.bottomNavigationView.selectedItemId = R.id.bottom_recommendation
     }
 
@@ -126,12 +123,13 @@ class RecActivity : AppCompatActivity() {
                                     binding.tvUsername.text = name
                                     saveUserToLocalDb(uid, name)
                                 } else {
-                                    binding.tvUsername.text = "Unknown User"
+                                    binding.tvUsername.text = getString(R.string.unknown_user);
+
                                 }
                             }
                             .addOnFailureListener {
                                 hideProgressBar()
-                                binding.tvUsername.text = "Error fetching name"
+                                binding.tvUsername.text = getString(R.string.error_fetching_name)
                             }
                     }
                 }

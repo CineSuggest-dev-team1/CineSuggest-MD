@@ -16,6 +16,24 @@
         android:theme="@style/Theme.CineSuggest"
         tools:targetApi="31">
         <activity
+            android:name=".view.Search.DetailSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Home.SavedMovieActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Home.SavedDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Home.DetailHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Setting.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Cinerec.DetailRecActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.Splash.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -40,22 +58,20 @@
             android:name=".view.Cinerec.Rec2Activity"
             android:exported="false" />
         <activity
+            android:name=".view.Cinerec.Rec1Activity"
+            android:exported="false" />
+        <activity
             android:name=".view.Home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".view.Login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Detail.MovieDetailActivity"
+            android:name=".view.Onboarding.OnboardingActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Onboarding.OnboardingActivity"
-            android:exported="false">
-        </activity>
-        <activity
             android:name=".view.Main.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

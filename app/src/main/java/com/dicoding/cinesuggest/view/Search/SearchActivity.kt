@@ -3,23 +3,21 @@ package com.dicoding.cinesuggest.view.Search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.dicoding.cinemasuggest.data.adapter.SearchAdapter
 import com.dicoding.cinemasuggest.data.response.SearchResponseItem
 import com.dicoding.cinemasuggest.data.retrofit.ApiConfig
 import com.dicoding.cinesuggest.R
+import com.dicoding.cinesuggest.data.adapter.SearchMovieAdapter
 import com.dicoding.cinesuggest.databinding.ActivitySearchBinding
 import com.dicoding.cinesuggest.view.Cinerec.Rec1Activity
 import com.dicoding.cinesuggest.view.Home.HomeActivity
-import com.example.cinemasuggest.data.adapter.Movie
-import com.example.cinemasuggest.data.adapter.MovieAdapter
-import com.example.cinemasuggest.data.room.AppDatabase
-import com.example.cinemasuggest.data.room.User
+import com.dicoding.cinesuggest.data.room.AppDatabase
+import com.dicoding.cinesuggest.data.room.auth.User
+import com.dicoding.cinesuggest.view.Setting.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,11 +29,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivitySearchBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var db: AppDatabase
-    private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +51,6 @@ class SearchActivity : AppCompatActivity() {
         // Get user name
         showProgressBar()
         getUserName()
-        setupRecyclerView()
 
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
@@ -62,52 +59,43 @@ class SearchActivity : AppCompatActivity() {
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
                     searchView.hide()
-                    performSearch()
+                    performSearch(searchView.text.toString())
                     false
                 }
         }
+
+        // Set up RecyclerView
+        binding.rvRecommendedMovies.layoutManager = LinearLayoutManager(this)
+
+        // Fetch and display movies with title "Avengers"
+        performSearch("Avengers")
 
         // Set up bottom navigation
         setupBottomNavigation()
     }
 
-    private fun setupRecyclerView() {
-        searchAdapter = SearchAdapter()
-        binding.rvRecommendedMovies.apply {
-            layoutManager = GridLayoutManager(this@SearchActivity, 2)
-            adapter = searchAdapter
-        }
-    }
-
-    private fun performSearch() {
+    private fun performSearch(query: String) {
         showProgressBar()
-        val searchText = binding.searchBar.text.toString()
-        val client = ApiConfig.apiService.searchMovies(searchText)
-        client.enqueue(object : Callback<List<SearchResponseItem>> {
+        val call = ApiConfig.apiService.searchMovies(query)
+        call.enqueue(object : Callback<List<SearchResponseItem>> {
             override fun onResponse(
                 call: Call<List<SearchResponseItem>>,
                 response: Response<List<SearchResponseItem>>
             ) {
                 hideProgressBar()
                 if (response.isSuccessful) {
-                    val responseItem = response.body()
-                    if (responseItem != null) {
-                        setMovie(responseItem)
-                    }
+                    val searchResults = response.body() ?: emptyList()
+                    binding.rvRecommendedMovies.adapter = SearchMovieAdapter(searchResults)
                 } else {
-                    Toast.makeText(this@SearchActivity, "Failed to retrieve search results", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SearchActivity, "Failed to get search results.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<SearchResponseItem>>, t: Throwable) {
                 hideProgressBar()
-                Log.e(TAG, "OnFailure: ${t.message}")
+                Toast.makeText(this@SearchActivity, "An error occurred: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-    private fun setMovie(movies: List<SearchResponseItem>){
-        searchAdapter.setData(movies)
     }
 
     private fun getUserName() {
@@ -176,7 +164,10 @@ class SearchActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.bottom_settings -> {
-                    // Add intent for settings activity if exists
+                    val intent = Intent(this@SearchActivity, SettingsActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -192,9 +183,5 @@ class SearchActivity : AppCompatActivity() {
     private fun hideProgressBar() {
         binding.loadingOverlay.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
-    }
-
-    companion object{
-        private val TAG = "SearchActivity"
     }
 }

@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.data.room
+package com.dicoding.cinesuggest.data.room.auth
 
 import androidx.room.Dao
 import androidx.room.Insert

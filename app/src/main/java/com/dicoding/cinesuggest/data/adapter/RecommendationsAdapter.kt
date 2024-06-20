@@ -28,8 +28,8 @@ class RecommendationsAdapter(private val recommendations: List<RecommendationRes
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.movieTitle)
-        private val posterImageView: ImageView = itemView.findViewById(R.id.movieImage)
+        private val titleTextView: TextView = itemView.findViewById(R.id.tv_title)
+        private val posterImageView: ImageView = itemView.findViewById(R.id.iv_poster)
 
         fun bind(recommendation: RecommendationResponseItem) {
             titleTextView.text = recommendation.title

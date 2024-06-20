@@ -27,6 +27,11 @@
     <string name="western">Western</string>
     <string name="thriller">Thriller</string>
     <string name="sci_fi">Sci-fi</string>
+    <string name="war">War</string>
+    <string name="family">Family</string>
+    <string name="history">History</string>
+    <string name="tvmovie">TvMovie</string>
+    <string name="animation">Animation</string>
     <string name="onboarding2">Select the genres you like to watch!</string>
     <string name="next">Next</string>
 
@@ -130,10 +135,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="war">War</string>
-    <string name="family">Family</string>
-    <string name="history">History</string>
-    <string name="tvmovie">TvMovie</string>
-    <string name="animation">Animation</string>
+    <string name="here_s_your_saved_movies">Here\'s your saved movies</string>
+    <string name="delete">Delete All</string>
+    <string name="loading">Loading...</string>
+    <string name="Profile">Here Is Your Profile</string>
+    <string name="edit_profile">Edit Your Profile Here :)</string>
+    <string name="edit_button">Edit Profile</string>
+    <string name="title">Title</string>
 
 </resources>

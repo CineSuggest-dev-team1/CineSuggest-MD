@@ -1,4 +1,4 @@
-package com.example.cinemasuggest.utils
+package com.dicoding.cinemasuggest.utils
 
 import android.content.Context
 import android.view.GestureDetector
